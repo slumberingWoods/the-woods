@@ -4,9 +4,9 @@ Tell the reader (someone who does not know anything about this project)
 all they need to know. The comments should usually include at least:
 ------------------------------------------------------------------------
 
-PROJECT TITLE:
-PURPOSE OF PROJECT:
-VERSION or DATE:
-HOW TO START THIS PROJECT:
-AUTHORS:
-USER INSTRUCTIONS:
+PROJECT TITLE: The Woods 
+PURPOSE OF PROJECT: 
+VERSION or DATE: 0.1
+HOW TO START THIS PROJECT: Run it
+AUTHORS: Thang Manh Tran and Alston Alwinappar
+USER INSTRUCTIONS: Press run
