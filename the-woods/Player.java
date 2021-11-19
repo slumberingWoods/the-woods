@@ -8,9 +8,9 @@ import greenfoot.*;  // (World, Actor, GreenfootImage, Greenfoot and MouseInfo)
  */
 public class Player extends Actor
 {
-    GreenfootImage[] sprites = new GreenfootImage[6];
+    GreenfootImage[] sprites = new GreenfootImage[12];
     int direction;
-    int moveTime = 5;
+    int time = 5;
     static int speed = 2;
     boolean isMoving;
     /**
@@ -24,6 +24,12 @@ public class Player extends Actor
         sprites[3] = new GreenfootImage("Player/Up0.png");
         sprites[4] = new GreenfootImage("Player/Up1.png");
         sprites[5] = new GreenfootImage("Player/Up2.png");
+        sprites[6] = new GreenfootImage("Player/Right0.png");
+        sprites[7] = new GreenfootImage("Player/Right1.png");
+        sprites[8] = new GreenfootImage("Player/Right2.png");
+        sprites[9] = new GreenfootImage("Player/Left0.png");
+        sprites[10] = new GreenfootImage("Player/Left1.png");
+        sprites[11] = new GreenfootImage("Player/Left2.png");
         setImage(sprites[direction]);
     }
     public void act()
@@ -33,13 +39,21 @@ public class Player extends Actor
     }
     public void checkMovement()
     {
-        if (Greenfoot.isKeyDown("down")) {
-            direction = 0;
-            setLocation(getX(),getY()+speed);
-        }
-        if (Greenfoot.isKeyDown("up")) {
-            direction = 3;    
-            setLocation(getX(),getY()-speed);
-        }
+            if (Greenfoot.isKeyDown("down")) {
+                direction = 0;
+                setLocation(getX(),getY()+speed);
+            }
+            if (Greenfoot.isKeyDown("up")) {
+                direction = 3;    
+                setLocation(getX(),getY()-speed);
+            }
+            if (Greenfoot.isKeyDown("right")) {
+                direction = 6;    
+                setLocation(getX()+speed,getY());
+            }
+            if (Greenfoot.isKeyDown("left")) {
+                direction = 9;    
+                setLocation(getX()-speed,getY());
+            }
     }
 }
