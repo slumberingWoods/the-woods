@@ -26,6 +26,6 @@ public class MyWorld extends World
     private void prepare() {
         addObject (new Player(), 230, 100);        
         addObject(new BasicObject("bed"),130,100);        
-
+        addObject(new BasicObject("table"),400,100); 
     }
 }

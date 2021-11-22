@@ -13,6 +13,6 @@ public class BasicObject extends Objects
      * the 'Act' or 'Run' button gets pressed in the environment.
      */
     public BasicObject(String name) {
-        setImage("house/" + name + ".jpg");
+        setImage("house/" + name + ".png");
     }
 }
