@@ -113,7 +113,7 @@ public class Player extends Actor
             isMoving = false;
     }
     public void checkColision() {
-        if(isTouching(Objects.class)) {
+        if(isTouching(Objects.class) || isTouching(Wall.class)) {
             setLocation(originalX, originalY);
             worldX = previousWorldX;
             worldY = previousWorldY;
