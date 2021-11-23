@@ -1,23 +1,23 @@
 import greenfoot.*;  // (World, Actor, GreenfootImage, Greenfoot and MouseInfo)
 
 /**
- * Write a description of class BasicObject here.
+ * Write a description of class WallTile here.
  * 
  * @author (your name) 
  * @version (a version number or a date)
  */
-public class BasicObject extends Objects
+public class WallTile extends Objects
 {
-
     /**
-     * Act - do whatever the BasicObject wants to do. This method is called whenever
+     * Act - do whatever the WallTile wants to do. This method is called whenever
      * the 'Act' or 'Run' button gets pressed in the environment.
      */
-    public BasicObject(String name) {
+    public WallTile(String name)
+    {
         setImage("house/" + name + ".png");
     }
     public void act() {
-        center = 20;
+        center = 25;
         checkPlayer();
     }
 }

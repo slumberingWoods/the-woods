@@ -14,6 +14,9 @@ public class Player extends Actor
     static int speed = 2;
     boolean isMoving;
     int phase = 0;
+    static int light;
+    static int sanity;
+    boolean isLight;
     
     static int originalX, originalY;
     static int worldX, worldY;
@@ -22,7 +25,9 @@ public class Player extends Actor
      * Act - do whatever the Player wants to do. This method is called whenever
      * the 'Act' or 'Run' button gets pressed in the environment.
      */
-    public Player(){
+    public Player(int sanity, int light){
+        this.sanity = sanity;
+        this.light = light;
         sprites[0] = new GreenfootImage("Player/Down0.png");
         sprites[1] = new GreenfootImage("Player/Down1.png");
         sprites[2] = new GreenfootImage("Player/Down2.png");
@@ -40,7 +45,11 @@ public class Player extends Actor
     public void act()
     {
         checkMovement();
-        checkColision();
+        if (light == 0) {
+            isLight = true;
+            if (Greenfoot.getRandomNumber(10) < 1)
+            sanity--;
+        }
     }
     public void checkMovement()
     {
@@ -50,8 +59,12 @@ public class Player extends Actor
         previousWorldY = worldY;
         if(speed > 0)
         {    
-            if(Greenfoot.isKeyDown("left") || Greenfoot.isKeyDown("right") || Greenfoot.isKeyDown("up") || Greenfoot.isKeyDown("down"))
+            if(Greenfoot.isKeyDown("left") || Greenfoot.isKeyDown("right") || Greenfoot.isKeyDown("up") || Greenfoot.isKeyDown("down")) {
                 time++;
+                if(time == 10 && !isLight) {
+                light--;
+                }
+            }
             if (Greenfoot.isKeyDown("down")) {
                 direction = 0;
                 setLocation(getX(),getY()+speed);
@@ -113,10 +126,8 @@ public class Player extends Actor
             isMoving = false;
     }
     public void checkColision() {
-        if(isTouching(Objects.class) || isTouching(Wall.class)) {
-            setLocation(originalX, originalY);
-            worldX = previousWorldX;
-            worldY = previousWorldY;
-        }
+        setLocation(originalX, originalY);
+        worldX = previousWorldX;
+        worldY = previousWorldY;
     }
 }
