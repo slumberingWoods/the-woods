@@ -35,10 +35,10 @@ public class MyWorld extends World
     }
     private void prepare() {
         addObject (new Player(100,100), 230, 200);        
-        addObject(new BasicObject("bed"),130,200);        
-        addObject(new BasicObject("table"),400,200); 
+        addObject(new BasicObject("bed", 30),130,200);        
+        addObject(new BasicObject("table", 10),400,200); 
         for (int i = 0; i < 18; i++) {
-            addObject(new WallTile("wall"),75+50*i,90); 
+            addObject(new WallTile("wall", 25),75+50*i,90); 
         }
         addObject(new Wall(50,700),25,350); 
         addObject(new Wall(50,700),975,350); 

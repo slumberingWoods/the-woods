@@ -8,16 +8,15 @@ import greenfoot.*;  // (World, Actor, GreenfootImage, Greenfoot and MouseInfo)
  */
 public class BasicObject extends Objects
 {
-
     /**
      * Act - do whatever the BasicObject wants to do. This method is called whenever
      * the 'Act' or 'Run' button gets pressed in the environment.
      */
-    public BasicObject(String name) {
+    public BasicObject(String name, int center) {
         setImage("house/" + name + ".png");
+        this.center = center;
     }
     public void act() {
-        center = 20;
         checkPlayer();
     }
 }
