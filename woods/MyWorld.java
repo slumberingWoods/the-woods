@@ -8,7 +8,15 @@ import greenfoot.*;  // (World, Actor, GreenfootImage, Greenfoot and MouseInfo)
  */
 public class MyWorld extends World
 {
-
+    public static final int WIDE = 250;
+    public static final int HIGH = 250;
+    
+    static int originalX = 150;
+    static int originalY = 150;
+    
+    Scroller scroller;
+    Actor scrollActor;
+    
     /**
      * Constructor for objects of class MyWorld.
      * 
@@ -16,10 +24,10 @@ public class MyWorld extends World
     public MyWorld()
     {    
         // Create a new world with 600x400 cells with a cell size of 1x1 pixels.
-        super(1000, 700, 1);  
-        prepareObjects();
+        super(WIDE, HIGH, 1, false);  
+        addObjects();
         addWalls();
-        setBackground("house/floor.jpeg");
+        addPlayer();
         setPaintOrder(Player.class, Objects.class, WallTile.class, Wall.class);
     }
     public void act() {
@@ -33,9 +41,27 @@ public class MyWorld extends World
             showText(null,getWidth()/2,getHeight()/2+50);
             showText("You lost", getWidth()/2,getHeight()/2);
         }
+        scroll();
     }
-    private void prepareObjects() {
-        addObject(new Player(100,100), 200, 150);        
+    public void scroll()
+    {
+        int dsX = scrollActor.getX() - WIDE / 2;
+        int dsY = scrollActor.getY() - HIGH / 2;
+        scroller.scroll(dsX, dsY);
+    }
+    private void addPlayer() { 
+        GreenfootImage bg = new GreenfootImage("house/floor.png");
+        scroller = new Scroller(this, bg, 1000, 700);
+        scrollActor = new Player(100,100);
+        addObject(scrollActor, originalX, originalY);
+        Player.originalX = originalX;
+        Player.originalY = originalY;
+        Player.worldX = originalX;
+        Player.worldY = originalY;
+        Player.speed = 2;
+        scroll();
+    }    
+    private void addObjects() {       
         addObject(new BasicObject("bed", 30),75, 150);        
         addObject(new BasicObject("table", 10),200,250); 
     }
