@@ -12,6 +12,7 @@ public class Player extends Actor
     static int direction;
     static int time;
     static int speed = 2;
+    int keys = 1;
     
     int phase = 0;
     static int light;

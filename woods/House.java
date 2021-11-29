@@ -1,12 +1,12 @@
 import greenfoot.*;  // (World, Actor, GreenfootImage, Greenfoot and MouseInfo)
 
 /**
- * Write a description of class MyWorld here.
+ * Write a description of class House here.
  * 
  * @author (your name) 
  * @version (a version number or a date)
  */
-public class MyWorld extends World
+public class House extends World
 {
     static final int WIDE = 1000;
     static final int HIGH = 700;
@@ -18,17 +18,17 @@ public class MyWorld extends World
     Player scrollActor;
     
     /**
-     * Constructor for objects of class MyWorld.
+     * Constructor for objects of class House.
      * 
      */
-    public MyWorld()
+    public House()
     {    
         // Create a new world with 600x400 cells with a cell size of 1x1 pixels.
         super(WIDE, HIGH, 1, false);  
         addObjects();
         addWalls();
         addPlayer();
-        setPaintOrder(Player.class, Objects.class, Wall.class, WallTile.class);
+        setPaintOrder(Darkness.class, Player.class, Objects.class, WallTile.class, Wall.class);
     }
     public void act() {
         scroll();
@@ -53,7 +53,7 @@ public class MyWorld extends World
         }
     }
     private void addPlayer() { 
-        GreenfootImage bg = new GreenfootImage("house/floor.png");
+        GreenfootImage bg = new GreenfootImage("floor.png");
         scroller = new Scroller(this, bg, 1000, 700);
         scrollActor = new Player(100,100);
         addObject(scrollActor, originalX, originalY);
@@ -67,6 +67,10 @@ public class MyWorld extends World
     private void addObjects() {       
         addObject(new BasicObject("bed", 40),75, 150);        
         addObject(new BasicObject("table", 15),200,125); 
+        addObject(new Darkness(), originalX, originalY);
+        addObject(new TextObject("closet", 15, "A regular closet"),300,100);
+        addObject(new ExitObject("houseDoor", 15, 
+            "Locked door to the basement. I need a key to open this", 1), 625, 90);
     }
     private void addWalls() {
         for (int i = 0; i < 9; i++) {

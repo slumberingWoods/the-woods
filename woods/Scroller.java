@@ -1,12 +1,26 @@
 import greenfoot.*;
-
 /**
- * Write a description of class Scroller here.
+ * CLASS: Scroller (extends Object)
+ * AUTHOR: danpost (greenfoot.org username)
+ * DATE: November 11, 2016
+ * MODIFIED: December 22, 2016 (fixed 'scroll' method for limited no-image scrolling)
+ * MODIFIED: February 21, 2017 (fixed scroll offsets for unlimited no-image scrolling)
  * 
- * @author (your name) 
- * @version (a version number or a date)
+ * DESCRIPTION:  This is a support class for a scrolling world.  It contains two constructors;
+ * one for unlimited scrolling and one for limited scrolling.  Both constructors have an 'image'
+ * parameter.  Because image manipulation can hog up CPU time, it is important to remember that
+ * it is better not to have a scrolling background image (having an Actor for the background is
+ * probably worse than having the background scroll).  For unlimited scrolling using a background
+ * image, the smaller that background image to be tiled, the better.  Making the viewport (the
+ * size of the world that is visible) smaller can help in CPU expense, also.  Scrolling worlds
+ * should be unbounded, allowing actors to move beyond the visible area.  Ensuring that actors
+ * are removed from the world if no longer needed when out of view will help to prevent lag,
+ * as well.  
+ * 
+ * It is the responsibility of the World object that creates a Scroller object to determine when
+ * to scroll and by how much.
  */
-public class Scroller  
+public class Scroller
 {
     private World world; // view window world
     private GreenfootImage scrollImage; // scrolling image
