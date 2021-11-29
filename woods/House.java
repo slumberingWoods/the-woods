@@ -65,12 +65,14 @@ public class House extends World
         scroll();
     }    
     private void addObjects() {       
+        addObject(new Darkness(), originalX, originalY);
         addObject(new BasicObject("bed", 40),75, 150);        
         addObject(new BasicObject("table", 15),200,125); 
-        addObject(new Darkness(), originalX, originalY);
         addObject(new TextObject("closet", 15, "A regular closet"),300,100);
         addObject(new ExitObject("houseDoor", 15, 
             "Locked door to the basement. I need a key to open this", 1), 625, 90);
+        addObject( new InteractObject("pot", 15, 
+            "I intended to put a plant here to hide the key but I never bought it"), 75, 450);
     }
     private void addWalls() {
         for (int i = 0; i < 9; i++) {

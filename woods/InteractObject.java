@@ -13,23 +13,34 @@ public class InteractObject extends Objects
      * the 'Act' or 'Run' button gets pressed in the environment.
      */    
     String text;
+    String name;
     int textTime = 60;
     boolean activateText = false;
+    boolean interacted = false;
     /**
      * Act - do whatever the TextObject wants to do. This method is called whenever
      * the 'Act' or 'Run' button gets pressed in the environment.
      */
     public InteractObject(String name, int center, String text) {
-        setImage("house/" + name + ".png");
+        setImage("objects/" + name + ".png");
         this.text = text;
         this.center = center;
+        this.name = name;
     }
     public void act() {
         checkPlayer();
-        if (Greenfoot.isKeyDown("z") && isInRange() && activateText == false) {
+        Player player = (Player)getWorld().getObjects(Player.class).get(0);
+        if (Greenfoot.isKeyDown("z") && isInRange() && activateText == false && interacted == false) {
             getWorld().showText(text,getWorld().getWidth()/2, getWorld().getHeight()*3/4);
             activateText = true;
-        }    
+            player.keys += 1;
+            interacted = true;
+            setImage("objects/" + name + "2" + ".png");
+        }  else if (Greenfoot.isKeyDown("z") && isInRange() && activateText == false && interacted == true) {
+            text = "There is nothing more to search here";
+            getWorld().showText(text,getWorld().getWidth()/2, getWorld().getHeight()*3/4);
+            activateText = true;
+        }
         if (activateText) {
             textTime--;
             if (textTime == 0) {

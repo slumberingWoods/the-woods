@@ -14,7 +14,7 @@ public class WallTile extends Objects
      */
     public WallTile(String name, int center)
     {
-        setImage("house/" + name + ".png");
+        setImage("objects/" + name + ".png");
         this.center = center;
     }
     public void act() {

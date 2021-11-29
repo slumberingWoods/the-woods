@@ -16,7 +16,7 @@ public class TextObject extends Objects
      * the 'Act' or 'Run' button gets pressed in the environment.
      */
     public TextObject(String name, int center, String text) {
-        setImage("house/" + name + ".png");
+        setImage("objects/" + name + ".png");
         this.text = text;
         this.center = center;
     }

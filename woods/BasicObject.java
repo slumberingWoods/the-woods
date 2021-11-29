@@ -13,7 +13,7 @@ public class BasicObject extends Objects
      * the 'Act' or 'Run' button gets pressed in the environment.
      */
     public BasicObject(String name, int center) {
-        setImage("house/" + name + ".png");
+        setImage("objects/" + name + ".png");
         this.center = center;
     }
     public void act() {
