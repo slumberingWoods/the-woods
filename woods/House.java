@@ -55,7 +55,7 @@ public class House extends World
     private void addPlayer() { 
         GreenfootImage bg = new GreenfootImage("floor.png");
         scroller = new Scroller(this, bg, 1000, 700);
-        scrollActor = new Player(100,100);
+        scrollActor = new Player(150,100);
         addObject(scrollActor, originalX, originalY);
         Player.originalX = originalX;
         Player.originalY = originalY;

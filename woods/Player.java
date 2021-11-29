@@ -19,7 +19,7 @@ public class Player extends Actor
     static int sanity;
     
     boolean isMoving;
-    boolean isLight = true;
+    boolean isLight;
     
     static int originalX, originalY;
     static int worldX, worldY;

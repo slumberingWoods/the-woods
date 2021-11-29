@@ -11,8 +11,8 @@ public class Woods extends World
     static final int WIDE = 1000;
     static final int HIGH = 700;
     
-    static int originalX = 125;
-    static int originalY = 150;
+    static int originalX = 1000;
+    static int originalY = 400;
     
     Scroller scroller;
     Player scrollActor;
@@ -26,6 +26,7 @@ public class Woods extends World
         // Create a new world with 600x400 cells with a cell size of 1x1 pixels.
         super(WIDE, HIGH, 1, false);  
         addPlayer();
+        addNPC();
         setPaintOrder(Darkness.class, Player.class, Objects.class, WallTile.class, Wall.class);
     }
     public void act() {
@@ -53,7 +54,7 @@ public class Woods extends World
     private void addPlayer() { 
         GreenfootImage bg = new GreenfootImage("void.png");
         scroller = new Scroller(this, bg, 2000, 1400);
-        scrollActor = new Player(100,100);
+        scrollActor = new Player(150,100);
         addObject(scrollActor, originalX, originalY);
         Player.originalX = originalX;
         Player.originalY = originalY;
@@ -62,4 +63,7 @@ public class Woods extends World
         Player.speed = 2;
         scroll();
     }    
+    private void addNPC() {
+        addObject(new NPCObject("girlinroses", 40, "Hello there"), 500, 300);
+    }
 }
