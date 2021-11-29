@@ -9,14 +9,16 @@ import greenfoot.*;  // (World, Actor, GreenfootImage, Greenfoot and MouseInfo)
 public class Player extends Actor
 {
     GreenfootImage[] sprites = new GreenfootImage[12];
-    int direction;
+    static int direction;
     static int time;
     static int speed = 2;
-    boolean isMoving;
+    
     int phase = 0;
     static int light;
     static int sanity;
-    boolean isLight;
+    
+    boolean isMoving;
+    boolean isLight = true;
     
     static int originalX, originalY;
     static int worldX, worldY;
@@ -45,8 +47,7 @@ public class Player extends Actor
     public void act()
     {
         checkMovement();
-        if (light == 0) {
-            isLight = true;
+        if (light == 0 && !isLight) {
             if (Greenfoot.getRandomNumber(10) < 1)
             sanity--;
         }
@@ -61,13 +62,14 @@ public class Player extends Actor
         {    
             if(Greenfoot.isKeyDown("left") || Greenfoot.isKeyDown("right") || Greenfoot.isKeyDown("up") || Greenfoot.isKeyDown("down")) {
                 time++;
-                if(time == 10 && !isLight) {
+                if(time == 10 && !isLight && light != 0) {
                 light--;
                 }
             }
             if (Greenfoot.isKeyDown("down")) {
                 direction = 0;
                 setLocation(getX(),getY()+speed);
+                worldY += speed;
                 if(getImage() == sprites[0] && time == 10 && phase == 0) {
                     setImage(sprites[1]);
                     phase = 1; 
@@ -79,6 +81,7 @@ public class Player extends Actor
             } else if (Greenfoot.isKeyDown("up")) {
                 direction = 3;    
                 setLocation(getX(),getY()-speed);
+                worldY -= speed;
                 if(getImage() == sprites[3] && time == 10 && phase == 0) {
                     setImage(sprites[4]);
                     phase = 1; 
@@ -90,6 +93,7 @@ public class Player extends Actor
             } else if (Greenfoot.isKeyDown("right")) {
                 direction = 6;    
                 setLocation(getX()+speed,getY());
+                worldX += speed;
                 if(getImage() == sprites[6] && time == 10 && phase == 0) {
                     setImage(sprites[7]);
                     phase = 1; 
@@ -101,6 +105,7 @@ public class Player extends Actor
             } else if (Greenfoot.isKeyDown("left")) {
                 direction = 9;    
                 setLocation(getX()-speed,getY());
+                worldX -= speed;
                 if(getImage() == sprites[9] && time == 10 && phase == 0) {
                     setImage(sprites[10]);
                     phase = 1; 
@@ -124,6 +129,10 @@ public class Player extends Actor
             }
         } else 
             isMoving = false;
+    }
+    public static boolean interactInput()
+    {
+        return Greenfoot.isKeyDown("enter");
     }
     public void checkColision() {
         setLocation(originalX, originalY);

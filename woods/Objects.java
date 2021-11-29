@@ -21,4 +21,21 @@ public class Objects extends Actor
         if(isTouching(Player.class) && PlayerY < getY() + center)
             player.checkColision();
     }
+        public boolean isInRange()
+    {
+        Player player = (Player)getWorld().getObjects(Player.class).get(0);
+        boolean isInRange = (Math.abs(player.getY() - getY()) < (getImage().getHeight() / 2 + player.getImage().getHeight() / 2 + 2) && 
+            Math.abs(player.getX() - getX()) < (getImage().getWidth() / 2 + player.getImage().getWidth() / 2 + 4));
+        if(isInRange && PlayerY - getY() < (center + 2) && PlayerY > getY() && 
+        Math.abs(PlayerX - getX()) < getImage().getWidth() / 2 + player.getImage().getWidth() / 2)
+            return(player.getImage() == player.sprites[1]);
+        else if(getY() > (getImage().getHeight() / 2) + PlayerY + player.getImage().getHeight() / 2 - 2 && 
+        Math.abs(PlayerX - getX()) < getImage().getWidth() / 2 + player.getImage().getWidth() / 2)
+            return(player.getImage() == player.sprites[0]);
+        else if(isInRange && PlayerX < getX())
+            return(player.getImage() == player.sprites[3]);
+        else if(isInRange && PlayerX > getX())
+            return(player.getImage() == player.sprites[2]);
+        return false;
+    }
 }
