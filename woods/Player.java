@@ -19,7 +19,7 @@ public class Player extends Actor
     static int sanity;
     
     boolean isMoving;
-    boolean isLight;
+    boolean isLight = true;
     
     static int originalX, originalY;
     static int worldX, worldY;
@@ -31,6 +31,7 @@ public class Player extends Actor
     public Player(int sanity, int light){
         this.sanity = sanity;
         this.light = light;
+        direction = 0;
         sprites[0] = new GreenfootImage("Player/Down0.png");
         sprites[1] = new GreenfootImage("Player/Down1.png");
         sprites[2] = new GreenfootImage("Player/Down2.png");

@@ -30,7 +30,7 @@ public class InteractObject extends Objects
     public void act() {
         checkPlayer();
         Player player = (Player)getWorld().getObjects(Player.class).get(0);
-        if (Greenfoot.isKeyDown("z") && isInRange() && activateText == false && interacted == false) {
+        if (Greenfoot.isKeyDown("z")  && isInRange() && activateText == false && interacted == false) {
             getWorld().showText(text,getWorld().getWidth()/2, getWorld().getHeight()*3/4);
             activateText = true;
             player.keys += 1;
