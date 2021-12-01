@@ -8,6 +8,10 @@ import greenfoot.*;  // (World, Actor, GreenfootImage, Greenfoot and MouseInfo)
  */
 public class Darkness extends Actor
 {
+    public Darkness() {
+        GreenfootImage darkness = new GreenfootImage("Darkness.png");
+        setImage(darkness);
+    }
     /**
      * Act - do whatever the Darkness wants to do. This method is called whenever
      * the 'Act' or 'Run' button gets pressed in the environment.

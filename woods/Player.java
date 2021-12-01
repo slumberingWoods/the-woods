@@ -20,6 +20,7 @@ public class Player extends Actor
     
     boolean isMoving;
     boolean isLight;
+    boolean menuOn = false;
     
     static int originalX, originalY;
     static int worldX, worldY;
@@ -28,7 +29,7 @@ public class Player extends Actor
      * Act - do whatever the Player wants to do. This method is called whenever
      * the 'Act' or 'Run' button gets pressed in the environment.
      */
-    public Player(int sanity, int light){
+    public Player(int light, int sanity){
         this.sanity = sanity;
         this.light = light;
         direction = 0;
@@ -49,6 +50,8 @@ public class Player extends Actor
     public void act()
     {
         checkMovement();
+        openMenu();
+        displayResources();
         if (light == 0 && !isLight) {
             if (Greenfoot.getRandomNumber(10) < 1)
             sanity--;
@@ -60,7 +63,7 @@ public class Player extends Actor
         originalY = getY();
         previousWorldX = worldX;
         previousWorldY = worldY;
-        if(speed > 0)
+        if(speed > 0 && menuOn == false)
         {    
             if(Greenfoot.isKeyDown("left") || Greenfoot.isKeyDown("right") || Greenfoot.isKeyDown("up") || Greenfoot.isKeyDown("down")) {
                 time++;
@@ -132,6 +135,19 @@ public class Player extends Actor
         } else 
             isMoving = false;
     }
+    public void openMenu() {
+        if (Greenfoot.isKeyDown("escape") && menuOn == false) {
+            menuOn = true;
+            getWorld().addObject(new MenuObject("background"), 
+                        getWorld().getWidth()/2, getWorld().getHeight()/2);
+            getWorld().addObject(new MenuObject("returntogame"), 
+                        getWorld().getWidth()/2, 150);
+            getWorld().addObject(new MenuObject("howtoplay"), 
+                        getWorld().getWidth()/2, 350);
+            getWorld().addObject(new MenuObject("mainmenu"), 
+                        getWorld().getWidth()/2, 550);
+        }
+    }
     public static boolean interactInput()
     {
         return Greenfoot.isKeyDown("enter");
@@ -140,5 +156,33 @@ public class Player extends Actor
         setLocation(originalX, originalY);
         worldX = previousWorldX;
         worldY = previousWorldY;
+    }
+    public void displayResources() {
+        if (menuOn == false) {
+            getWorld().showText("Time: "+Player.time, 
+                getWorld().getWidth()/2, getWorld().getHeight()/2);
+            getWorld().showText("Light: "+Player.light,
+                getWorld().getWidth()/2, getWorld().getHeight()/2+25);
+            getWorld().showText("Sanity: "+Player.sanity,
+                getWorld().getWidth()/2, getWorld().getHeight()/2+50);
+            if (Player.sanity == 0) {
+                Greenfoot.stop();
+                getWorld().showText(null, 
+                    getWorld().getWidth()/2,getWorld().getHeight()/2);
+                getWorld().showText(null, 
+                    getWorld().getWidth()/2,getWorld().getHeight()/2+25);
+                getWorld().showText(null, 
+                    getWorld().getWidth()/2,getWorld().getHeight()/2+50);
+                getWorld().showText("You lost", 
+                    getWorld().getWidth()/2,getWorld().getHeight()/2);
+            }   
+        } else {
+            getWorld().showText(null, 
+                getWorld().getWidth()/2,getWorld().getHeight()/2);
+            getWorld().showText(null, 
+                getWorld().getWidth()/2,getWorld().getHeight()/2+25);
+            getWorld().showText(null, 
+                getWorld().getWidth()/2,getWorld().getHeight()/2+50);
+        }
     }
 }

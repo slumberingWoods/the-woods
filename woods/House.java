@@ -28,7 +28,7 @@ public class House extends World
         addObjects();
         addWalls();
         addPlayer();
-        setPaintOrder(Darkness.class, Player.class, Objects.class, WallTile.class, Wall.class);
+        setPaintOrder(MenuObject.class, Darkness.class, Player.class, Objects.class, WallTile.class, Wall.class);
     }
     public void act() {
         scroll();
