@@ -69,6 +69,8 @@ public class House extends World
         addObject(new BasicObject("bed", 40),75, 150);        
         addObject(new BasicObject("table", 15),200,125); 
         addObject(new TextObject("closet", 15, "A regular closet"),300,100);
+        addObject(new TextObject("fridge", 30, 
+            "NOTE TO SELF: find a plant to put in the pot in the living room."),800,440);
         addObject(new ExitObject("houseDoor", 15, 
             "Locked door to the basement. I need a key to open this", 1), 625, 90);
         addObject( new InteractObject("pot", 15, 

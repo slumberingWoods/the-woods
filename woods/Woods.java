@@ -11,8 +11,8 @@ public class Woods extends World
     static final int WIDE = 1000;
     static final int HIGH = 700;
     
-    static int originalX = 1000;
-    static int originalY = 400;
+    static int originalX = 1250;
+    static int originalY = 875;
     
     Scroller scroller;
     Player scrollActor;
@@ -64,6 +64,6 @@ public class Woods extends World
         scroll();
     }    
     private void addNPC() {
-        addObject(new NPCObject("girlinroses", 40), 500, 300);
+        addObject(new NPCGIRObject("woods"), 500, 200);
     }
 }

@@ -8,15 +8,15 @@ import greenfoot.*;  // (World, Actor, GreenfootImage, Greenfoot and MouseInfo)
  */
 public class TextBox extends Actor
 {
-    String name;
     GreenfootImage[] sprites = new GreenfootImage[2];
     int delay = 60;
     int direction;
+    int nameX = 255;
+    int name2X = 740;
     boolean activated;
     TextContinue orb = new TextContinue();
-    public TextBox(String name) {
-        direction = 1;
-        this.name = name;
+    public TextBox(int direction) {
+        this.direction = direction;
         sprites[0] = new GreenfootImage("textbox.png");
         sprites[1] = new GreenfootImage("textbox2.png");
         setImage(sprites[direction]);
@@ -28,10 +28,5 @@ public class TextBox extends Actor
     public void act()
     {
         setImage(sprites[direction]);
-        Player player = (Player)getWorld().getObjects(Player.class).get(0);
-        displayDialogue();
     }
-    public void displayDialogue() {
-        
-    }
-}
+} 
