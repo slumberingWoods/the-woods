@@ -9,7 +9,7 @@ import greenfoot.*;  // (World, Actor, GreenfootImage, Greenfoot and MouseInfo)
 public class TextObject extends Objects
 {
     String text;
-    int textTime = 60;
+    int textTime = 100;
     boolean activateText = false;
     /**
      * Act - do whatever the TextObject wants to do. This method is called whenever
@@ -31,7 +31,7 @@ public class TextObject extends Objects
             if (textTime == 0) {
                 getWorld().showText(null, getWorld().getWidth()/2, getWorld().getHeight()*3/4);
                 activateText = false;
-                textTime = 60;
+                textTime = 100;
             }
         }
     }

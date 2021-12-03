@@ -10,8 +10,8 @@ public class ExitObject extends Objects
 {
     String text;
     int keys;
-    int textTime = 60;
-    int transitionDelay = 120;
+    int textTime = 100;
+    int transitionDelay = 100;
     boolean activateText = false;
     boolean doorUnlock = false;
     /**
@@ -25,7 +25,6 @@ public class ExitObject extends Objects
         this.keys = keys;
     }
     public void act() {
-        
         checkPlayer();
         if (Greenfoot.isKeyDown("z") && isInRange() && activateText == false && PKeys != keys) {
             getWorld().showText(text,getWorld().getWidth()/2, getWorld().getHeight()*3/4);
@@ -41,7 +40,7 @@ public class ExitObject extends Objects
             if (textTime == 0) {
                 getWorld().showText(null,getWorld().getWidth()/2, getWorld().getHeight()*3/4);
                 activateText = false;
-                textTime = 60;
+                textTime = 100;
             }
         }
         if (doorUnlock) {

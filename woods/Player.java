@@ -21,6 +21,7 @@ public class Player extends Actor
     boolean isMoving;
     boolean isLight;
     boolean menuOn = false;
+    boolean textOn = false;
     
     static int originalX, originalY;
     static int worldX, worldY;
@@ -63,7 +64,7 @@ public class Player extends Actor
         originalY = getY();
         previousWorldX = worldX;
         previousWorldY = worldY;
-        if(speed > 0 && menuOn == false)
+        if(speed > 0 && menuOn == false && textOn == false)
         {    
             if(Greenfoot.isKeyDown("left") || Greenfoot.isKeyDown("right") || Greenfoot.isKeyDown("up") || Greenfoot.isKeyDown("down")) {
                 time++;

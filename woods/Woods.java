@@ -53,7 +53,7 @@ public class Woods extends World
     }
     private void addPlayer() { 
         GreenfootImage bg = new GreenfootImage("void.png");
-        scroller = new Scroller(this, bg, 2000, 1400);
+        scroller = new Scroller(this, bg, 2500, 1750);
         scrollActor = new Player(150,100);
         addObject(scrollActor, originalX, originalY);
         Player.originalX = originalX;
@@ -64,6 +64,6 @@ public class Woods extends World
         scroll();
     }    
     private void addNPC() {
-        addObject(new NPCObject("girlinroses", 40, "Hello there"), 500, 300);
+        addObject(new NPCObject("girlinroses", 40), 500, 300);
     }
 }
