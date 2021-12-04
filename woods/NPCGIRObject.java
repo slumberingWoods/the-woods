@@ -13,6 +13,8 @@ public class NPCGIRObject extends Objects
     int delay = 40;
     boolean activated;
     boolean continueSymbol;
+    boolean endText;
+    boolean choiceBox;
     public NPCGIRObject(String world) {
         this.world = world;  
         setImage("npcs/girlinroses.png");
@@ -24,7 +26,7 @@ public class NPCGIRObject extends Objects
         getWorld().showText("delay" +delay, 500, 100);
         switch (world) {
             case "woods":
-                if (Greenfoot.isKeyDown("z") && isInRange() && flag == 0) {
+                if (Greenfoot.isKeyDown("z") && isInRange() && flag == 0 && activated == false) {
                     player.textOn = true;
                     activated = true;
                     getWorld().addObject(new TextBox(1), 500, 500);
@@ -85,10 +87,29 @@ public class NPCGIRObject extends Objects
                     getWorld().showText(null, 740, 400);
                     getWorld().showText(null, 500, 500);
                     getWorld().removeObjects(getWorld().getObjects(TextBox.class));
+                    delay = 40;
+                    endText = true;
+                    flag++;
+                } 
+                if (Greenfoot.isKeyDown("z") && isInRange() && flag == 10 && activated == false && delay == 0) {
+                    delay = 40;
+                    player.textOn = true;
+                    activated = true;
+                    getWorld().addObject(new TextBox(1), 500, 500);
+                    getWorld().showText("Hmmm? Still lost?", 500, 500);
+                    getWorld().showText("???", 740, 400);
+                    flag++;
+                } else if (Greenfoot.isKeyDown("z") && flag == 11 && delay == 0) {
+                    delay = 40;
+                    getWorld().showText("I guess I can give you some help. For a price of course.", 500, 500);
+                    flag++;
+                } else if (Greenfoot.isKeyDown("z") && flag == 12 && delay == 0) {
+                    delay = 40;
+                    getWorld().showText("How about trading some of your sanity for a clue.", 500, 500);
                     flag++;
                 }
         }
-        if (activated) {
+        if (activated || endText) {
             checkTime();
         }
         if (delay == 0 && activated && continueSymbol == false) {
@@ -102,6 +123,9 @@ public class NPCGIRObject extends Objects
     public void checkTime() {
         if (delay > 0) {
             delay--;
+        }
+        if (delay == 0 && endText == true) {
+            endText = false;
         }
     }
 }
