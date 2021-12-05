@@ -27,6 +27,7 @@ public class Woods extends World
         super(WIDE, HIGH, 1, false);  
         addPlayer();
         addNPC();
+        addObjects();
         setPaintOrder(MenuObject.class ,Darkness.class, Player.class, Objects.class, WallTile.class, Wall.class);
     }
     public void act() {
@@ -53,7 +54,15 @@ public class Woods extends World
         Player.speed = 2;
         scroll();
     }    
+    private void addObjects() {
+        addObject(new ExitObject("woodsGate", 15, 
+            "Locked gate, I could see a garden beyond the fencing", 2), 500, 1150);
+    }
     private void addNPC() {
         addObject(new NPCGIRObject("woods"), 500, 200);
+        for (int i = 0; i < 25; i++) {
+            addObject(new WallTile("wallhorizontal", 25),550+50*i,1150);
+            addObject(new WallTile("wallhorizontal", 25),450-50*i,1150);
+        }
     }
 }

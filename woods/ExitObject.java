@@ -9,6 +9,7 @@ import greenfoot.*;  // (World, Actor, GreenfootImage, Greenfoot and MouseInfo)
 public class ExitObject extends Objects
 {
     String text;
+    String name;
     int keys;
     int textTime = 100;
     int transitionDelay = 100;
@@ -23,6 +24,7 @@ public class ExitObject extends Objects
         this.text = text;
         this.center = center;
         this.keys = keys;
+        this.name = name;
     }
     public void act() {
         checkPlayer();
@@ -30,7 +32,7 @@ public class ExitObject extends Objects
             getWorld().showText(text,getWorld().getWidth()/2, getWorld().getHeight()*3/4);
             activateText = true;
         } else if (Greenfoot.isKeyDown("z") && isInRange() && activateText == false && PKeys == keys) {
-            text = "Door is unlocked";
+            text = name+" is unlocked";
             getWorld().showText(text,getWorld().getWidth()/2, getWorld().getHeight()*3/4);
             activateText = true;
             doorUnlock = true;
@@ -46,7 +48,11 @@ public class ExitObject extends Objects
         if (doorUnlock) {
             transitionDelay--;
             if (transitionDelay == 0) {
-                Greenfoot.setWorld(new Woods());
+                switch (name) {
+                    case "houseDoor" :
+                        Greenfoot.setWorld(new Woods());
+                        break;
+                }
             }
         }
     }

@@ -32,16 +32,6 @@ public class House extends World
     }
     public void act() {
         scroll();
-        showText("Time: "+Player.time, getWidth()/2,getHeight()/2);
-        showText("Light: "+Player.light,getWidth()/2,getHeight()/2+25);
-        showText("Sanity: "+Player.sanity,getWidth()/2,getHeight()/2+50);
-        if (Player.sanity == 0) {
-            Greenfoot.stop();
-            showText(null, getWidth()/2,getHeight()/2);
-            showText(null,getWidth()/2,getHeight()/2+25);
-            showText(null,getWidth()/2,getHeight()/2+50);
-            showText("You lost", getWidth()/2,getHeight()/2);
-        }
     }
     public void scroll()
     {

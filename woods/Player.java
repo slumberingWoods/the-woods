@@ -185,6 +185,7 @@ public class Player extends Actor
                     getWorld().getWidth()/12,getWorld().getHeight()/5+25);
                 getWorld().showText(null, 
                     getWorld().getWidth()/15,getWorld().getHeight()/15+50);
+                
             }   
         } else {
             getWorld().showText(null, 
