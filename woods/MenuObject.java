@@ -36,6 +36,8 @@ public class MenuObject extends Objects
                 if (Greenfoot.mouseClicked(this)) {
                     getWorld().addObject(new MenuObject("background"), 
                         getWorld().getWidth()/2, getWorld().getHeight()/2);
+                    getWorld().addObject(new MenuObject("creditsInfo"), 
+                        getWorld().getWidth()/2, getWorld().getHeight()/2);
                     getWorld().addObject(new MenuObject("exit"), 60,60);
                 }
                 break;

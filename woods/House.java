@@ -25,10 +25,12 @@ public class House extends World
     {    
         // Create a new world with 600x400 cells with a cell size of 1x1 pixels.
         super(WIDE, HIGH, 1, false);  
+        setPaintOrder(MenuObject.class, Darkness.class, Player.class, Objects.class, WallTile.class, Wall.class);
         addObjects();
         addWalls();
         addPlayer();
-        setPaintOrder(MenuObject.class, Darkness.class, Player.class, Objects.class, WallTile.class, Wall.class);
+        Player player = (Player)getObjects(Player.class).get(0);
+        player.keys = 0;
     }
     public void act() {
         scroll();
@@ -56,15 +58,17 @@ public class House extends World
     }    
     private void addObjects() {       
         addObject(new Darkness(), originalX, originalY);
-        addObject(new BasicObject("bed", 40),75, 150);        
-        addObject(new BasicObject("table", 15),200,125); 
-        addObject(new TextObject("closet", 15, "A regular closet"),300,100);
+        addObject(new LightObject("table", 
+            "The light of the candles will keep me safe for now. If I stay near them, I don't have to use my lighter" , 15),200,125);        
+        addObject(new BasicObject("bed", 40),75, 150); 
+        addObject(new TextObject("closet", 15, 
+            "A regular closet, all of my clothes are in here, unfolded."),300,100);
         addObject(new TextObject("fridge", 30, 
-            "NOTE TO SELF: find a plant to put in the pot in the living room."),800,440);
+            "NOTE TO SELF: find a plant to hide the key in the living room."),800,440);
         addObject(new ExitObject("houseDoor", 15, 
-            "Locked door to the basement. I need a key to open this", 1), 625, 90);
+            "Locked door to the basement. I need a key to open this.", 1), 625, 90);
         addObject( new InteractObject("pot", 15, 
-            "I intended to put a plant here to hide the key but I never bought it"), 75, 450);
+            "I intended to put a plant here to hide the key but I never bought it."), 75, 450);
     }
     private void addWalls() {
         for (int i = 0; i < 9; i++) {

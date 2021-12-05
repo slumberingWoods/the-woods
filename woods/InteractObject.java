@@ -31,20 +31,20 @@ public class InteractObject extends Objects
         checkPlayer();
         Player player = (Player)getWorld().getObjects(Player.class).get(0);
         if (Greenfoot.isKeyDown("z")  && isInRange() && activateText == false && interacted == false) {
-            getWorld().showText(text,getWorld().getWidth()/2, getWorld().getHeight()*3/4);
+            getWorld().showText(text,getWorld().getWidth()/2, getWorld().getHeight()*4/5);
             activateText = true;
             player.keys += 1;
             interacted = true;
             setImage("objects/" + name + "2" + ".png");
         }  else if (Greenfoot.isKeyDown("z") && isInRange() && activateText == false && interacted == true) {
             text = "There is nothing more to search here";
-            getWorld().showText(text,getWorld().getWidth()/2, getWorld().getHeight()*3/4);
+            getWorld().showText(text,getWorld().getWidth()/2, getWorld().getHeight()*4/5);
             activateText = true;
         }
         if (activateText) {
             textTime--;
             if (textTime == 0) {
-                getWorld().showText(null, getWorld().getWidth()/2, getWorld().getHeight()*3/4);;
+                getWorld().showText(null, getWorld().getWidth()/2, getWorld().getHeight()*4/5);;
                 activateText = false;
                 textTime = 60;
             }

@@ -28,19 +28,28 @@ public class ExitObject extends Objects
     }
     public void act() {
         checkPlayer();
+        String displayName = "";
+        switch (name) {
+            case "houseDoor":
+                displayName = "Electrical room door";
+                break;
+            case "woodsGate":
+                displayName = "Garden gate";
+                break;
+        }
         if (Greenfoot.isKeyDown("z") && isInRange() && activateText == false && PKeys != keys) {
-            getWorld().showText(text,getWorld().getWidth()/2, getWorld().getHeight()*3/4);
+            getWorld().showText(text,getWorld().getWidth()/2, getWorld().getHeight()*4/5);
             activateText = true;
         } else if (Greenfoot.isKeyDown("z") && isInRange() && activateText == false && PKeys == keys) {
-            text = name+" is unlocked";
-            getWorld().showText(text,getWorld().getWidth()/2, getWorld().getHeight()*3/4);
+            text = displayName+" is unlocked";
+            getWorld().showText(text,getWorld().getWidth()/2, getWorld().getHeight()*4/5);
             activateText = true;
             doorUnlock = true;
         }
         if (activateText) {
             textTime--;
             if (textTime == 0) {
-                getWorld().showText(null,getWorld().getWidth()/2, getWorld().getHeight()*3/4);
+                getWorld().showText(null,getWorld().getWidth()/2, getWorld().getHeight()*4/5);
                 activateText = false;
                 textTime = 100;
             }

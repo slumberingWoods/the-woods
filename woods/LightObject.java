@@ -1,27 +1,33 @@
 import greenfoot.*;  // (World, Actor, GreenfootImage, Greenfoot and MouseInfo)
 
 /**
- * Write a description of class TextObject here.
+ * Write a description of class LightObject here.
  * 
  * @author (your name) 
  * @version (a version number or a date)
  */
-public class TextObject extends Objects
+public class LightObject extends Objects
 {
     String text;
-    int textTime = 100;
+    String name;
+    int textTime = 60;
     boolean activateText = false;
-    /**
-     * Act - do whatever the TextObject wants to do. This method is called whenever
-     * the 'Act' or 'Run' button gets pressed in the environment.
-     */
-    public TextObject(String name, int center, String text) {
+    boolean radius;
+    public LightObject(String name, String text, int center) {
         setImage("objects/" + name + ".png");
         this.text = text;
+        this.name = name;
         this.center = center;
     }
     public void act() {
         checkPlayer();
+        checkLight();   
+    }
+    public void checkLight() {
+        Player player = (Player)getWorld().getObjects(Player.class).get(0);
+        PlayerX = player.getX();
+        PlayerY = player.getY();
+        radius = (Math.abs(getX() - player.getX()) < 100 && Math.abs(getY() - player.getY()) < 100);
         if (Greenfoot.isKeyDown("z") && isInRange() && activateText == false) {
             getWorld().showText(text, getWorld().getWidth()/2, getWorld().getHeight()*4/5);
             activateText = true;
@@ -33,6 +39,11 @@ public class TextObject extends Objects
                 activateText = false;
                 textTime = 100;
             }
+        }
+        if (radius) {
+            player.isLight = true;
+        } else if (!radius) {
+            player.isLight = false;
         }
     }
 }

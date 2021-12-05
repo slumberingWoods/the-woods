@@ -24,8 +24,9 @@ public class Menu extends World
     }
     public void addObjects() {
         addObject(new MenuObject("title"), getWidth()/2, 125);
-        addObject(new MenuObject("newgame"), getWidth()/2, 300);
-        addObject(new MenuObject("howtoplay"), getWidth()/2, 450);
-        addObject(new MenuObject("credits"), getWidth()/2, 600);
+        addObject(new MenuObject("newgame"), getWidth()/2 + 200, 300);
+        addObject(new MenuObject("howtoplay"), getWidth()/2 + 200, 450);
+        addObject(new MenuObject("menusubs"), getWidth()/2 - 200, 450);
+        addObject(new MenuObject("credits"), getWidth()/2 + 200, 600);
     }
 }
