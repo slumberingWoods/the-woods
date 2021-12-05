@@ -1,160 +1,88 @@
 import greenfoot.*;  // (World, Actor, GreenfootImage, Greenfoot and MouseInfo)
 
 /**
- * Write a description of class NCPGIRObject here.
+ * Write a description of class NPCOMObject here.
  * 
  * @author (your name) 
  * @version (a version number or a date)
  */
-public class NPCGIRObject extends Objects
+public class NPCOMObject extends Objects
 {
     int flag = 0;
     String world;
     int delay = 40;
-    int choice = 0;
+    int choice;
     boolean occupied;
     boolean activated;
     boolean continueSymbol;
     boolean endText;
     boolean choiceText;
-    public NPCGIRObject(String world) {
+    public NPCOMObject(String world) {
         this.world = world;  
-        delay = 40;
-        setImage("npcs/girlinroses.png");
+        setImage("npcs/oldman.png");
     }
     public void act()
     {
         Player player = (Player)getWorld().getObjects(Player.class).get(0);
-        NPCOMObject oldman = (NPCOMObject)getWorld().getObjects(NPCOMObject.class).get(0);
+        NPCGIRObject girlrose = (NPCGIRObject)getWorld().getObjects(NPCGIRObject.class).get(0);
         checkPlayer();
-        getWorld().showText("delay" +delay, 500, 100);
+        getWorld().showText("delay" +delay, 500, 300);
         if (!occupied) {
         switch (world) {
             case "woods":
+                if (player.rose == 0) {
                 if (Greenfoot.isKeyDown("z") && isInRange() && flag == 0 && activated == false) {
-                    oldman.occupied = true;
+                    girlrose.occupied = true;
                     player.textOn = true;
                     activated = true;
                     getWorld().addObject(new TextBox(1), 500, 500);
-                    getWorld().showText("Hello there.", 500, 500);
+                    getWorld().showText("Howdy. What brings you here to this gloomy place?", 500, 500);
                     getWorld().showText("???", 740, 400);
                     flag++;
                 } else if (Greenfoot.isKeyDown("z") && flag == 1 && delay == 0) {
                     delay = 40;
-                    getWorld().showText("It seems that you have entered into the woods.", 500, 500);
+                    getWorld().showText("Care to give an old man a light?", 500, 500);
                     flag++;
                 } else if (Greenfoot.isKeyDown("z") && flag == 2 && delay == 0) {
-                    TextBox box = (TextBox)getWorld().getObjects(TextBox.class).get(0);
-                    box.direction = 0;
-                    getWorld().showText(null, 740, 400);
-                    getWorld().showText("You", 250, 400);
-                    getWorld().showText("Who are you?", 500, 500);
                     delay = 40;
+                    getWorld().showText("I will give you something special.", 500, 500);
                     flag++;
                 } else if (Greenfoot.isKeyDown("z") && flag == 3 && delay == 0) {
-                    TextBox box = (TextBox)getWorld().getObjects(TextBox.class).get(0);
-                    box.direction = 1;
-                    getWorld().showText(null, 250, 400);
-                    getWorld().showText("???", 740, 400);
-                    getWorld().showText("I am just a simple imhabitant of the woods.", 500, 500);
                     delay = 40;
+                    getWorld().showText("Spend 20 light?", 500, 500);
                     flag++;
                 } else if (Greenfoot.isKeyDown("z") && flag == 4 && delay == 0) {
-                    delay = 40;
-                    getWorld().showText("If you want to return to where you come from...", 500, 500);
-                    flag++;
-                }  else if (Greenfoot.isKeyDown("z") && flag == 5 && delay == 0) {
-                    delay = 40;
-                    getWorld().showText("You should seek to open the gate south of here.", 500, 500);
-                    flag++;
-                } else if (Greenfoot.isKeyDown("z") && flag == 6 && delay == 0) {
-                    delay = 40;
-                    getWorld().showText("Of course, the gate is locked and the keys have gone missing.", 500, 500);
-                    flag++;
-                } else if (Greenfoot.isKeyDown("z") && flag == 7 && delay == 0) {
-                    TextBox box = (TextBox)getWorld().getObjects(TextBox.class).get(0);
-                    box.direction = 0;
-                    getWorld().showText(null, 740, 400);
-                    getWorld().showText("You", 250, 400);
-                    getWorld().showText("I guess will look for the keys then", 500, 500);
-                    delay = 40;
-                    flag++;
-                } else if (Greenfoot.isKeyDown("z") && flag == 8 && delay == 0) {
-                    TextBox box = (TextBox)getWorld().getObjects(TextBox.class).get(0);
-                    box.direction = 1;
-                    getWorld().showText(null, 250, 400);
-                    getWorld().showText("???", 740, 400);
-                    getWorld().showText("Good hunting.", 500, 500);
-                    delay = 40;
-                    flag++;
-                } else if (Greenfoot.isKeyDown("z") && flag == 9 && delay == 0) {
-                    player.textOn = false;
-                    activated = false;
-                    oldman.occupied = false;
-                    getWorld().showText(null, 740, 400);
-                    getWorld().showText(null, 500, 500);
-                    getWorld().removeObjects(getWorld().getObjects(TextBox.class));
-                    delay = 40;
-                    endText = true;
-                    flag++;
-                } 
-                if (Greenfoot.isKeyDown("z") && isInRange() && flag == 10 && activated == false && delay == 0) {
-                    delay = 40;
-                    oldman.occupied = true;
-                    player.textOn = true;
-                    activated = true;
-                    getWorld().addObject(new TextBox(1), 500, 500);
-                    getWorld().showText("Hmmm? Still lost?", 500, 500);
-                    getWorld().showText("???", 740, 400);
-                    flag++;
-                } else if (Greenfoot.isKeyDown("z") && flag == 11 && delay == 0) {
-                    delay = 40;
-                    getWorld().showText("I guess I can give you some help. For a price of course.", 500, 500);
-                    flag++;
-                } else if (Greenfoot.isKeyDown("z") && flag == 12 && delay == 0) {
-                    delay = 40;
-                    getWorld().showText("How about trading some of your sanity for a clue.", 500, 500);
-                    flag++;
-                } else if (Greenfoot.isKeyDown("z") && flag == 13 && delay == 0) {
-                    delay = 40;
-                    getWorld().showText("It would only hurt for a bit.", 500, 500);
-                    flag++;
-                } else if (Greenfoot.isKeyDown("z") && flag == 14 && delay == 0) {
-                    delay = 40;
-                    getWorld().showText("Do you want to trade 20 sanity for help?", 500, 500);
-                    flag++;
-                } else if (Greenfoot.isKeyDown("z") && flag == 15 && delay == 0) {
                     delay = 40;
                     choiceText = true;
                     getWorld().showText("Yes", 350, 550);
                     getWorld().showText("No", 600, 550);
                     getWorld().addObject(new TextChoice(), 300, 550);
                     flag++;
-                } else if (Greenfoot.isKeyDown("z") && flag == 16 && delay == 0) {
+                } else if (Greenfoot.isKeyDown("z") && flag == 5 && delay == 0) {
                     TextChoice choice = (TextChoice)getWorld().getObjects(TextChoice.class).get(0);
                     if (choice.location == 0) {
-                        player.rose = 1;
-                        player. sanity -= 20;
+                        player.keys++;
+                        player. light -= 20;
                         choiceText = false;
                         getWorld().showText(null, 350, 550);
                         getWorld().showText(null, 600, 550);
                         delay = 40;
-                        getWorld().showText("Lose 20 sanity.", 500, 500);
+                        getWorld().showText("Lose 20 light.", 500, 500);
                         flag++;
                     } else if (choice.location == 1) {
                         choiceText = false;
                         getWorld().showText(null, 350, 550);
                         getWorld().showText(null, 600, 550);
                         delay = 40;
-                        getWorld().showText("Maybe another time then.", 500, 500);
+                        getWorld().showText("No worries, not every likes smokes.", 500, 500);
                         flag = 20;
                     }
-                } else if (Greenfoot.isKeyDown("z") && flag == 17 && delay == 0) {
+                } else if (Greenfoot.isKeyDown("z") && flag == 6 && delay == 0) {
                     delay = 40;
-                    getWorld().showText("Here's a rose, it will help you down the line.", 500, 500);
+                    getWorld().showText("Here's a key for your sake.", 500, 500);
                     flag++;
-                } else if (Greenfoot.isKeyDown("z") && flag == 18 && delay == 0) {
-                    oldman.occupied = false;
+                } else if (Greenfoot.isKeyDown("z") && flag == 7 && delay == 0) {
+                    girlrose.occupied = false;
                     player.textOn = false;
                     activated = false;
                     getWorld().showText(null, 740, 400);
@@ -164,7 +92,109 @@ public class NPCGIRObject extends Objects
                     endText = true;
                     flag = 100;    
                 } else if (Greenfoot.isKeyDown("z") && flag == 20 && delay == 0) {
-                    oldman.occupied = false;
+                    girlrose.occupied = false;
+                    player.textOn = false;
+                    activated = false;
+                    getWorld().showText(null, 740, 400);
+                    getWorld().showText(null, 500, 500);
+                    getWorld().removeObjects(getWorld().getObjects(TextBox.class));
+                    delay = 40;
+                    endText = true;
+                    flag++;
+                }
+                if (Greenfoot.isKeyDown("z") && isInRange() && flag == 21 && activated == false && delay == 0) {
+                    girlrose.occupied = true;
+                    delay = 40;
+                    player.textOn = true;
+                    activated = true;
+                    getWorld().addObject(new TextBox(1), 500, 500);
+                    getWorld().showText("You ready for the trade?", 500, 500);
+                    getWorld().showText("???", 740, 400);
+                    flag = 3;
+                }
+                if (Greenfoot.isKeyDown("z") && isInRange() && flag == 100 && activated == false && delay == 0) {
+                    delay = 40;
+                    girlrose.occupied = true;
+                    player.textOn = true;
+                    activated = true;
+                    getWorld().addObject(new TextBox(1), 500, 500);
+                    getWorld().showText("Sorry lad but I am busy smoking", 500, 500);
+                    getWorld().showText("???", 740, 400);
+                    flag++;
+                } else if (Greenfoot.isKeyDown("z") && flag == 101 && delay == 0) {
+                    girlrose.occupied = false;
+                    player.textOn = false;
+                    activated = false;
+                    getWorld().showText(null, 740, 400);
+                    getWorld().showText(null, 500, 500);
+                    getWorld().removeObjects(getWorld().getObjects(TextBox.class));
+                    delay = 40;
+                    endText = true;
+                    flag = 100;
+                }
+            } else if (player.rose > 0) {
+                if (Greenfoot.isKeyDown("z") && isInRange() && flag == 0 && activated == false) {
+                    girlrose.occupied = true;
+                    player.textOn = true;
+                    activated = true;
+                    getWorld().addObject(new TextBox(1), 500, 500);
+                    getWorld().showText("Is that a rose you have there", 500, 500);
+                    getWorld().showText("???", 740, 400);
+                    flag++;
+                } else if (Greenfoot.isKeyDown("z") && flag == 1 && delay == 0) {
+                    delay = 40;
+                    getWorld().showText("Mind giving it to me?", 500, 500);
+                    flag++;
+                } else if (Greenfoot.isKeyDown("z") && flag == 2 && delay == 0) {
+                    delay = 40;
+                    getWorld().showText("I will give you a key a found earlier.", 500, 500);
+                    flag++;
+                } else if (Greenfoot.isKeyDown("z") && flag == 3 && delay == 0) {
+                    delay = 40;
+                    getWorld().showText("Trade rose for key?", 500, 500);
+                    flag++;
+                } else if (Greenfoot.isKeyDown("z") && flag == 4 && delay == 0) {
+                    delay = 40;
+                    choiceText = true;
+                    getWorld().showText("Yes", 350, 550);
+                    getWorld().showText("No", 600, 550);
+                    getWorld().addObject(new TextChoice(), 300, 550);
+                    flag++;
+                } else if (Greenfoot.isKeyDown("z") && flag == 5 && delay == 0) {
+                    TextChoice choice = (TextChoice)getWorld().getObjects(TextChoice.class).get(0);
+                    if (choice.location == 0) {
+                        player.rose -= 1;
+                        player.keys++;
+                        choiceText = false;
+                        getWorld().showText(null, 350, 550);
+                        getWorld().showText(null, 600, 550);
+                        delay = 40;
+                        getWorld().showText("Lose rose.", 500, 500);
+                        flag++;
+                    } else if (choice.location == 1) {
+                        choiceText = false;
+                        getWorld().showText(null, 350, 550);
+                        getWorld().showText(null, 600, 550);
+                        delay = 40;
+                        getWorld().showText("It's good, I know that thing is valuable.", 500, 500);
+                        flag = 20;
+                    }
+                } else if (Greenfoot.isKeyDown("z") && flag == 6 && delay == 0) {
+                    delay = 40;
+                    getWorld().showText("Here's the key I promiced ya.", 500, 500);
+                    flag++;
+                } else if (Greenfoot.isKeyDown("z") && flag == 7 && delay == 0) {
+                    girlrose.occupied = false;
+                    player.textOn = false;
+                    activated = false;
+                    getWorld().showText(null, 740, 400);
+                    getWorld().showText(null, 500, 500);
+                    getWorld().removeObjects(getWorld().getObjects(TextBox.class));
+                    delay = 40;
+                    endText = true;
+                    flag = 100;    
+                } else if (Greenfoot.isKeyDown("z") && flag == 20 && delay == 0) {
+                    girlrose.occupied = false;
                     player.textOn = false;
                     activated = false;
                     getWorld().showText(null, 740, 400);
@@ -176,25 +206,25 @@ public class NPCGIRObject extends Objects
                 }
                 if (Greenfoot.isKeyDown("z") && isInRange() && flag == 21 && activated == false && delay == 0) {
                     delay = 40;
-                    oldman.occupied = true;
+                    girlrose.occupied = true;
                     player.textOn = true;
                     activated = true;
                     getWorld().addObject(new TextBox(1), 500, 500);
-                    getWorld().showText("Reconsidered?", 500, 500);
+                    getWorld().showText("You ready for the trade?", 500, 500);
                     getWorld().showText("???", 740, 400);
-                    flag = 12;
+                    flag = 3;
                 }
                 if (Greenfoot.isKeyDown("z") && isInRange() && flag == 100 && activated == false && delay == 0) {
                     delay = 40;
-                    oldman.occupied = true;
+                    girlrose.occupied = true;
                     player.textOn = true;
                     activated = true;
                     getWorld().addObject(new TextBox(1), 500, 500);
-                    getWorld().showText("Sorry but I don't have any left to help you with.", 500, 500);
+                    getWorld().showText("If I picked up another shiny, I will tell ya.", 500, 500);
                     getWorld().showText("???", 740, 400);
                     flag++;
                 } else if (Greenfoot.isKeyDown("z") && flag == 101 && delay == 0) {
-                    oldman.occupied = false;
+                    girlrose.occupied = false;
                     player.textOn = false;
                     activated = false;
                     getWorld().showText(null, 740, 400);
@@ -205,6 +235,7 @@ public class NPCGIRObject extends Objects
                     flag = 100;
                 }
             }
+        }
         if (activated || endText) {
             checkTime();
         }

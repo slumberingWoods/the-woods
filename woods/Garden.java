@@ -1,27 +1,22 @@
 import greenfoot.*;  // (World, Actor, GreenfootImage, Greenfoot and MouseInfo)
 
 /**
- * Write a description of class Woods here.
+ * Write a description of class Garden here.
  * 
  * @author (your name) 
  * @version (a version number or a date)
  */
-public class Woods extends World
+public class Garden extends World
 {
     static final int WIDE = 1000;
     static final int HIGH = 700;
     
-    static int originalX = 600;
-    static int originalY = 700;
+    static int originalX = 1000;
+    static int originalY = 200;
     
     Scroller scroller;
     Player scrollActor;
-    
-    /**
-     * Constructor for objects of class House.
-     * 
-     */
-    public Woods()
+    public Garden()
     {    
         super(WIDE, HIGH, 1, false);  
         setPaintOrder(MenuObject.class ,Darkness.class, Player.class, Objects.class, WallTile.class, Wall.class);
@@ -45,7 +40,7 @@ public class Woods extends World
     }
     private void addPlayer() { 
         GreenfootImage bg = new GreenfootImage("void.png");
-        scroller = new Scroller(this, bg, 1800, 1200);
+        scroller = new Scroller(this, bg, 2000, 1400);
         scrollActor = new Player(200,100);
         addObject(scrollActor, originalX, originalY);
         Player.originalX = originalX;
@@ -56,17 +51,15 @@ public class Woods extends World
         scroll();
     }    
     private void addObjects() {
-        addObject(new ExitObject("woodsGate", 15, 
-            "Locked gate, I could see a garden beyond the fencing", 2), 600, 1150);
-        addObject(new InteractObject("stump", 15, 
-            "A hollow stump. There's a key inside."), 900, 200);
+        addObject(new TextObject("woodsGate", 15, 
+            "There is no reason for me to return to the other side."), 1000, 150);
         for (int i = 0; i < 25; i++) {
-            addObject(new WallTile("wallhorizontal", 25),650+50*i,1150);
-            addObject(new WallTile("wallhorizontal", 25),550-50*i,1150);
+            addObject(new WallTile("wallhorizontal", 25),1050+50*i,150);
+            addObject(new WallTile("wallhorizontal", 25),950-50*i,150);
         }
     }
     private void addNPC() {
-        addObject(new NPCGIRObject("woods"), 600 , 600);
-        addObject(new NPCOMObject("woods"), 50 , 1000);
+        addObject(new NPCGIRObject("garden"), 1000 , 800);
+        addObject(new NPCOMObject("garden"), 50 , 1000);
     }
-}
+}   

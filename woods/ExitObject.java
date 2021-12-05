@@ -61,6 +61,9 @@ public class ExitObject extends Objects
                     case "houseDoor" :
                         Greenfoot.setWorld(new Woods());
                         break;
+                    case "woodsGate" :
+                        Greenfoot.setWorld(new Woods());
+                        break;
                 }
             }
         }
