@@ -27,20 +27,10 @@ public class Woods extends World
         super(WIDE, HIGH, 1, false);  
         addPlayer();
         addNPC();
-        setPaintOrder(Darkness.class, Player.class, Objects.class, WallTile.class, Wall.class);
+        setPaintOrder(MenuObject.class ,Darkness.class, Player.class, Objects.class, WallTile.class, Wall.class);
     }
     public void act() {
         scroll();
-        showText("Time: "+Player.time, getWidth()/2,getHeight()/2);
-        showText("Light: "+Player.light,getWidth()/2,getHeight()/2+25);
-        showText("Sanity: "+Player.sanity,getWidth()/2,getHeight()/2+50);
-        if (Player.sanity == 0) {
-            Greenfoot.stop();
-            showText(null, getWidth()/2,getHeight()/2);
-            showText(null,getWidth()/2,getHeight()/2+25);
-            showText(null,getWidth()/2,getHeight()/2+50);
-            showText("You lost", getWidth()/2,getHeight()/2);
-        }
     }
     public void scroll()
     {
@@ -54,7 +44,7 @@ public class Woods extends World
     private void addPlayer() { 
         GreenfootImage bg = new GreenfootImage("void.png");
         scroller = new Scroller(this, bg, 2500, 1750);
-        scrollActor = new Player(150,100);
+        scrollActor = new Player(200,100);
         addObject(scrollActor, originalX, originalY);
         Player.originalX = originalX;
         Player.originalY = originalY;

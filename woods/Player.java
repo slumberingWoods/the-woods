@@ -12,7 +12,8 @@ public class Player extends Actor
     static int direction;
     static int time;
     static int speed = 2;
-    int keys = 0;
+    static int keys = 0;
+    static int rose = 0;
     
     int phase = 0;
     static int light;
@@ -161,29 +162,37 @@ public class Player extends Actor
     public void displayResources() {
         if (menuOn == false) {
             getWorld().showText("Time: "+Player.time, 
-                getWorld().getWidth()/2, getWorld().getHeight()/2);
+                getWorld().getWidth()/12, getWorld().getHeight()/15);
             getWorld().showText("Light: "+Player.light,
-                getWorld().getWidth()/2, getWorld().getHeight()/2+25);
+                getWorld().getWidth()/12, getWorld().getHeight()/15+25);
             getWorld().showText("Sanity: "+Player.sanity,
-                getWorld().getWidth()/2, getWorld().getHeight()/2+50);
+                getWorld().getWidth()/12, getWorld().getHeight()/15+50);
+            if (keys > 0) {
+                getWorld().showText("Keys: "+Player.keys,
+                    getWorld().getWidth()/12, getWorld().getHeight()/15+75);
+            } else 
+                getWorld().showText(null,
+                    getWorld().getWidth()/12, getWorld().getHeight()/15+75);
+            if (rose > 0) {
+                getWorld().showText("Roses: "+Player.rose,
+                    getWorld().getWidth()/12, getWorld().getHeight()/15+100);
+            }
             if (Player.sanity == 0) {
                 Greenfoot.stop();
                 getWorld().showText(null, 
-                    getWorld().getWidth()/2,getWorld().getHeight()/2);
+                    getWorld().getWidth()/12,getWorld().getHeight()/15);
                 getWorld().showText(null, 
-                    getWorld().getWidth()/2,getWorld().getHeight()/2+25);
+                    getWorld().getWidth()/12,getWorld().getHeight()/5+25);
                 getWorld().showText(null, 
-                    getWorld().getWidth()/2,getWorld().getHeight()/2+50);
-                getWorld().showText("You lost", 
-                    getWorld().getWidth()/2,getWorld().getHeight()/2);
+                    getWorld().getWidth()/15,getWorld().getHeight()/15+50);
             }   
         } else {
             getWorld().showText(null, 
-                getWorld().getWidth()/2,getWorld().getHeight()/2);
+                getWorld().getWidth()/12,getWorld().getHeight()/15);
             getWorld().showText(null, 
-                getWorld().getWidth()/2,getWorld().getHeight()/2+25);
+                getWorld().getWidth()/12,getWorld().getHeight()/15+25);
             getWorld().showText(null, 
-                getWorld().getWidth()/2,getWorld().getHeight()/2+50);
+                getWorld().getWidth()/12,getWorld().getHeight()/15+50);
         }
     }
 }
