@@ -184,6 +184,10 @@ public class Player extends Actor
                 getWorld().getWidth()*11/12,getWorld().getHeight()/15+25);
             getWorld().showText(null, 
                 getWorld().getWidth()*11/12,getWorld().getHeight()/15+50);
+            getWorld().showText(null,
+                getWorld().getWidth()*11/12, getWorld().getHeight()/15+75);
+            getWorld().showText(null,
+                    getWorld().getWidth()*11/12, getWorld().getHeight()/15+100);
         }
         if (Player.sanity == 0) {
                 menuOn = true;
