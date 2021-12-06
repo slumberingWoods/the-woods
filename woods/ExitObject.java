@@ -62,7 +62,7 @@ public class ExitObject extends Objects
                         Greenfoot.setWorld(new Woods());
                         break;
                     case "woodsGate" :
-                        Greenfoot.setWorld(new Woods());
+                        Greenfoot.setWorld(new Garden());
                         break;
                 }
             }
