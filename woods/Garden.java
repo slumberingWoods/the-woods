@@ -55,6 +55,9 @@ public class Garden extends World
             "There is no reason for me to return to the other side."), 1000, 50);
         addObject(new ExitObject("well", 45, 
             "A overgrown well, the opening is closed by 3 locks.", 3), 1000, 800);
+        addObject(new LightObject("lantern", 
+            "An unlit lantern, I think I can light it up.",
+            15, false), 400,200);
         for (int i = 0; i < 25; i++) {
             addObject(new WallTile("wallhorizontal", 25),1050+50*i,50);
             addObject(new WallTile("wallhorizontal", 25),950-50*i,50);
@@ -62,6 +65,6 @@ public class Garden extends World
     }
     private void addNPC() {
         addObject(new NPCGIRObject("garden"), 1100 , 800);
-        addObject(new NPCOMObject("garden"), 50 , 1000);
+        addObject(new NPCOMObject("garden"), 50 , 200);
     }
 }   

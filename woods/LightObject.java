@@ -14,6 +14,7 @@ public class LightObject extends Objects
     boolean activateText = false;
     boolean radius;
     boolean lightOn;
+    static int lanternLit = 0;
     public LightObject(String name, String text, int center, boolean lightOn) {
         setImage("objects/" + name + ".png");
         this.text = text;
@@ -31,12 +32,16 @@ public class LightObject extends Objects
         PlayerY = player.getY();
         radius = (Math.abs(getX() - player.getX()) < 100 && Math.abs(getY() - player.getY()) < 100);
         if (Greenfoot.isKeyDown("z") && isInRange() && activateText == false && lightOn == true) {
-            if (name == "lantern") 
-                text = "I feel much safer with this lantern lit up.";
             getWorld().showText(text, getWorld().getWidth()/2, getWorld().getHeight()*4/5);
             activateText = true;
         } else if (Greenfoot.isKeyDown("z") && isInRange() && activateText == false && lightOn == false) {
             getWorld().showText(text, getWorld().getWidth()/2, getWorld().getHeight()*4/5);
+            if (name == "lantern") {
+                text = "I feel much safer with this lantern lit up.";
+                if (Garden.class.isInstance(getWorld())) {
+                    lanternLit++;
+                } 
+            }
             activateText = true;
             lightOn = true;
             setImage("objects/" + name + "1.png");
@@ -49,10 +54,18 @@ public class LightObject extends Objects
                 textTime = 100;
             }
         }
-        if (radius) {
-            player.isLight = true;
-        } else if (!radius) {
-            player.isLight = false;
+        if (lightOn) {
+            if (radius) {
+                player.isLight = true;
+            } else if (!radius) {
+                player.isLight = false;
+            }
+        }
+        checkMonster();
+    }
+    public void checkMonster() {
+        if (lanternLit == 2) {
+            
         }
     }
 }

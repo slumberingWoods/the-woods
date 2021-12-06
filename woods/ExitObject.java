@@ -37,6 +37,9 @@ public class ExitObject extends Objects
             case "woodsGate":
                 displayName = "Garden gate";
                 break;
+            case "well":
+                displayName = "Well";
+                break;
         }
         if (Greenfoot.isKeyDown("z") && isInRange() && activateText == false && PKeys != keys) {
             getWorld().showText(text,getWorld().getWidth()/2, getWorld().getHeight()*4/5);
