@@ -29,7 +29,7 @@ public class NPCOMObject extends Objects
         if (!occupied) {
         switch (world) {
             case "woods":
-                if (player.rose == 0) {
+                if (Player.rose == 0) {
                 if (Greenfoot.isKeyDown("z") && isInRange() && flag == 0 && activated == false) {
                     girlrose.occupied = true;
                     player.textOn = true;
@@ -60,8 +60,8 @@ public class NPCOMObject extends Objects
                 } else if (Greenfoot.isKeyDown("z") && flag == 5 && delay == 0) {
                     TextChoice choice = (TextChoice)getWorld().getObjects(TextChoice.class).get(0);
                     if (choice.location == 0) {
-                        player.keys++;
-                        player. light -= 20;
+                        Player.keys++;
+                        Player. light -= 20;
                         choiceText = false;
                         getWorld().showText(null, 350, 550);
                         getWorld().showText(null, 600, 550);
@@ -137,7 +137,7 @@ public class NPCOMObject extends Objects
                     player.textOn = true;
                     activated = true;
                     getWorld().addObject(new TextBox(1), 500, 500);
-                    getWorld().showText("Is that a rose you have there", 500, 500);
+                    getWorld().showText("Is that a blue rose you have there", 500, 500);
                     getWorld().showText("???", 740, 400);
                     flag++;
                 } else if (Greenfoot.isKeyDown("z") && flag == 1 && delay == 0) {
@@ -162,8 +162,8 @@ public class NPCOMObject extends Objects
                 } else if (Greenfoot.isKeyDown("z") && flag == 5 && delay == 0) {
                     TextChoice choice = (TextChoice)getWorld().getObjects(TextChoice.class).get(0);
                     if (choice.location == 0) {
-                        player.rose -= 1;
-                        player.keys++;
+                        Player.rose -= 1;
+                        Player.keys++;
                         choiceText = false;
                         getWorld().showText(null, 350, 550);
                         getWorld().showText(null, 600, 550);
@@ -267,8 +267,8 @@ public class NPCOMObject extends Objects
                     } else if (Greenfoot.isKeyDown("z") && flag == 5 && delay == 0) {
                         TextChoice choice = (TextChoice)getWorld().getObjects(TextChoice.class).get(0);
                         if (choice.location == 0) {
-                            player.keys++;
-                            player. light -= 20;
+                            Player.keys++;
+                            Player. light -= 20;
                             choiceText = false;
                             getWorld().showText(null, 350, 550);
                             getWorld().showText(null, 600, 550);
@@ -339,7 +339,111 @@ public class NPCOMObject extends Objects
                         flag = 100;
                     }
                 }  else {
-                    
+                    if (Greenfoot.isKeyDown("z") && isInRange() && flag == 0 && activated == false) {
+                        girlrose.occupied = true;
+                        player.textOn = true;
+                        activated = true;
+                        getWorld().addObject(new TextBox(1), 500, 500);
+                        getWorld().showText("I see that you have found a blue rose.", 500, 500);
+                        getWorld().showText("???", 740, 400);
+                        flag++;
+                    } else if (Greenfoot.isKeyDown("z") && flag == 1 && delay == 0) {
+                        delay = 40;
+                        getWorld().showText("You want to do a trade?", 500, 500);
+                        flag++;
+                    } else if (Greenfoot.isKeyDown("z") && flag == 2 && delay == 0) {
+                        delay = 40;
+                        getWorld().showText("I will give you a key a found earlier.", 500, 500);
+                        flag++;
+                    } else if (Greenfoot.isKeyDown("z") && flag == 3 && delay == 0) {
+                        delay = 40;
+                        getWorld().showText("Trade rose for key?", 500, 500);
+                        flag++;
+                    } else if (Greenfoot.isKeyDown("z") && flag == 4 && delay == 0) {
+                        delay = 40;
+                        choiceText = true;
+                        getWorld().showText("Yes", 350, 550);
+                        getWorld().showText("No", 600, 550);
+                        getWorld().addObject(new TextChoice(), 300, 550);
+                        flag++;
+                    } else if (Greenfoot.isKeyDown("z") && flag == 5 && delay == 0) {
+                        TextChoice choice = (TextChoice)getWorld().getObjects(TextChoice.class).get(0);
+                        if (choice.location == 0) {
+                            Player.rose -= 1;
+                            Player.keys++;
+                            choiceText = false;
+                            getWorld().showText(null, 350, 550);
+                            getWorld().showText(null, 600, 550);
+                            delay = 40;
+                            getWorld().showText("Lose a rose.", 500, 500);
+                            flag++;
+                        } else if (choice.location == 1) {
+                            choiceText = false;
+                            getWorld().showText(null, 350, 550);
+                            getWorld().showText(null, 600, 550);
+                            delay = 40;
+                            getWorld().showText("It's good, I know that thing is valuable.", 500, 500);
+                            flag = 20;
+                        }
+                    } else if (Greenfoot.isKeyDown("z") && flag == 6 && delay == 0) {
+                        delay = 40;
+                        getWorld().showText("Here's the key I promiced ya.", 500, 500);
+                        flag++;
+                    } else if (Greenfoot.isKeyDown("z") && flag == 7 && delay == 0) {
+                        girlrose.occupied = false;
+                        player.textOn = false;
+                        activated = false;
+                        getWorld().showText(null, 740, 400);
+                        getWorld().showText(null, 500, 500);
+                        getWorld().removeObjects(getWorld().getObjects(TextBox.class));
+                        delay = 40;
+                        endText = true;
+                        flag = 100;    
+                    } else if (Greenfoot.isKeyDown("z") && flag == 20 && delay == 0) {
+                        girlrose.occupied = false;
+                        player.textOn = false;
+                        activated = false;
+                        getWorld().showText(null, 740, 400);
+                        getWorld().showText(null, 500, 500);
+                        getWorld().removeObjects(getWorld().getObjects(TextBox.class));
+                        delay = 40;
+                        endText = true;
+                        flag++;
+                    }
+                    if (Greenfoot.isKeyDown("z") && isInRange() && flag == 21 && activated == false && delay == 0) {
+                        delay = 40;
+                        girlrose.occupied = true;
+                        player.textOn = true;
+                        activated = true;
+                        getWorld().addObject(new TextBox(1), 500, 500);
+                        getWorld().showText("You ready for the trade?", 500, 500);
+                        getWorld().showText("???", 740, 400);
+                        flag = 3;
+                    }
+                    if (Greenfoot.isKeyDown("z") && isInRange() && flag == 100 && activated == false && delay == 0) {
+                        delay = 40;
+                        girlrose.occupied = true;
+                        player.textOn = true;
+                        activated = true;
+                        getWorld().addObject(new TextBox(1), 500, 500);
+                        getWorld().showText("If I picked up another shiny, I will tell ya.", 500, 500);
+                        getWorld().showText("???", 740, 400);
+                        flag++;
+                    } else if (Greenfoot.isKeyDown("z") && flag == 101 && delay == 0) {
+                        delay = 40;
+                        getWorld().showText("If we ever meet again.", 500, 500);
+                        flag++;
+                    } else if (Greenfoot.isKeyDown("z") && flag == 102 && delay == 0) {
+                        girlrose.occupied = false;
+                        player.textOn = false;
+                        activated = false;
+                        getWorld().showText(null, 740, 400);
+                        getWorld().showText(null, 500, 500);
+                        getWorld().removeObjects(getWorld().getObjects(TextBox.class));
+                        delay = 40;
+                        endText = true;
+                        flag = 100;
+                    }
                 }
             break;
         }

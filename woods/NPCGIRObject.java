@@ -132,8 +132,8 @@ public class NPCGIRObject extends Objects
                 } else if (Greenfoot.isKeyDown("z") && flag == 16 && delay == 0) {
                     TextChoice choice = (TextChoice)getWorld().getObjects(TextChoice.class).get(0);
                     if (choice.location == 0) {
-                        player.rose = 1;
-                        player. sanity -= 20;
+                        Player.rose = 1;
+                        Player.sanity -= 20;
                         choiceText = false;
                         getWorld().showText(null, 350, 550);
                         getWorld().showText(null, 600, 550);
@@ -150,7 +150,7 @@ public class NPCGIRObject extends Objects
                     }
                 } else if (Greenfoot.isKeyDown("z") && flag == 17 && delay == 0) {
                     delay = 40;
-                    getWorld().showText("Here's a rose, it will help you down the line.", 500, 500);
+                    getWorld().showText("Here's a blue rose, it will help you down the line.", 500, 500);
                     flag++;
                 } else if (Greenfoot.isKeyDown("z") && flag == 18 && delay == 0) {
                     oldman.occupied = false;
@@ -270,7 +270,7 @@ public class NPCGIRObject extends Objects
                     flag++;
                 } else if (Greenfoot.isKeyDown("z") && flag == 10 && delay == 0) {
                     delay = 40;
-                    getWorld().showText("I assume that you want another rose.", 500, 500);
+                    getWorld().showText("I guess it can't be helped.", 500, 500);
                     flag++;
                 } else if (Greenfoot.isKeyDown("z") && flag == 11 && delay == 0) {
                     delay = 40;
@@ -291,8 +291,8 @@ public class NPCGIRObject extends Objects
                 } else if (Greenfoot.isKeyDown("z") && flag == 14 && delay == 0) {
                     TextChoice choice = (TextChoice)getWorld().getObjects(TextChoice.class).get(0);
                     if (choice.location == 0) {
-                        player.rose = 1;
-                        player. sanity -= 30;
+                        Player.rose = 1;
+                        Player. sanity -= 30;
                         choiceText = false;
                         getWorld().showText(null, 350, 550);
                         getWorld().showText(null, 600, 550);
@@ -342,7 +342,34 @@ public class NPCGIRObject extends Objects
                     getWorld().showText("???", 740, 400);
                     flag = 12;
                 }
-                if (Greenfoot.isKeyDown("z") && isInRange() && flag == 100 && activated == false && delay == 0) {
+                if (Greenfoot.isKeyDown("z") && isInRange() && flag == 100 && activated == false
+                            && delay == 0 && Player.keys < 3) {
+                    delay = 40;
+                    oldman.occupied = true;
+                    player.textOn = true;
+                    activated = true;
+                    getWorld().addObject(new TextBox(1), 500, 500);
+                    getWorld().showText("If you are stuck, try checking out the lanterns.", 500, 500);
+                    getWorld().showText("???", 740, 400);
+                    flag++;
+                } else if (Greenfoot.isKeyDown("z") && isInRange() && flag == 101
+                            && delay == 0 && Player.keys < 3) {
+                     delay = 40;    
+                     getWorld().showText("I heard that they are cursed.", 500, 500);
+                     flag++;
+                } else if (Greenfoot.isKeyDown("z") && flag == 102 && delay == 0 && Player.keys < 3) {
+                    oldman.occupied = false;
+                    player.textOn = false;
+                    activated = false;
+                    getWorld().showText(null, 740, 400);
+                    getWorld().showText(null, 500, 500);
+                    getWorld().removeObjects(getWorld().getObjects(TextBox.class));
+                    delay = 40;
+                    endText = true;
+                    flag = 100;
+                }
+                if (Greenfoot.isKeyDown("z") && isInRange() && flag == 100 && activated == false && delay == 0 
+                        && Player.keys == 3) {
                     delay = 40;
                     oldman.occupied = true;
                     player.textOn = true;
@@ -351,7 +378,7 @@ public class NPCGIRObject extends Objects
                     getWorld().showText("Sorry but I don't have any left to help you with.", 500, 500);
                     getWorld().showText("???", 740, 400);
                     flag++;
-                } else if (Greenfoot.isKeyDown("z") && flag == 101 && delay == 0) {
+                } else if (Greenfoot.isKeyDown("z") && flag == 101 && delay == 0 && Player.keys == 3) {
                     oldman.occupied = false;
                     player.textOn = false;
                     activated = false;

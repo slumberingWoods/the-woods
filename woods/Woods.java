@@ -29,8 +29,7 @@ public class Woods extends World
         addNPC();
         addObjects();
         addPlayer();
-        Player player = (Player)getObjects(Player.class).get(0);
-        player.keys = 0;
+        Player.keys = 0;
     }
     public void act() {
         scroll();
@@ -47,7 +46,7 @@ public class Woods extends World
     private void addPlayer() { 
         GreenfootImage bg = new GreenfootImage("void.png");
         scroller = new Scroller(this, bg, 1800, 1200);
-        scrollActor = new Player(200,100);
+        scrollActor = new Player(300,100);
         addObject(scrollActor, originalX, originalY);
         Player.originalX = originalX;
         Player.originalY = originalY;
@@ -62,7 +61,7 @@ public class Woods extends World
             15, false), 750,600); 
         addObject(new LightObject("lantern", 
             "An unlit lantern, I think I can light it up.",
-            15, false), 250,300);
+            15, false), 250,200);
         addObject(new Darkness(), originalX, originalY);
         addObject(new ExitObject("woodsGate", 15, 
             "Locked gate, I could see a garden beyond the fencing", 2), 600, 1150);
