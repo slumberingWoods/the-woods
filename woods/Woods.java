@@ -24,7 +24,8 @@ public class Woods extends World
     public Woods()
     {    
         super(WIDE, HIGH, 1, false);  
-        setPaintOrder(MenuObject.class ,Darkness.class, Player.class, Objects.class, WallTile.class, Wall.class);
+        setPaintOrder(MenuObject.class, TextChoice.class, TextContinue.class, TextBox.class, Darkness.class, 
+            Player.class, Objects.class, WallTile.class, Wall.class);
         addNPC();
         addObjects();
         addPlayer();
@@ -56,17 +57,26 @@ public class Woods extends World
         scroll();
     }    
     private void addObjects() {
+        addObject(new LightObject("lantern", 
+            "An unlit lantern, I think I can light it up.",
+            15, false), 750,600); 
+        addObject(new LightObject("lantern", 
+            "An unlit lantern, I think I can light it up.",
+            15, false), 250,300);
+        addObject(new Darkness(), originalX, originalY);
         addObject(new ExitObject("woodsGate", 15, 
             "Locked gate, I could see a garden beyond the fencing", 2), 600, 1150);
         addObject(new InteractObject("stump", 15, 
-            "A hollow stump. There's a key inside."), 900, 200);
+            "A hollow stump. There's a key inside."), 1000, 200);
         for (int i = 0; i < 25; i++) {
             addObject(new WallTile("wallhorizontal", 25),650+50*i,1150);
             addObject(new WallTile("wallhorizontal", 25),550-50*i,1150);
         }
+        for (int i = 0; i < 10; i++)
+            addObject(new DecorObject("footprints"),100+50*i,1125);
     }
     private void addNPC() {
         addObject(new NPCGIRObject("woods"), 600 , 600);
-        addObject(new NPCOMObject("woods"), 50 , 1100);
+        addObject(new NPCOMObject("woods"), 50 , 1075);
     }
 }

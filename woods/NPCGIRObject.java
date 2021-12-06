@@ -27,7 +27,6 @@ public class NPCGIRObject extends Objects
         Player player = (Player)getWorld().getObjects(Player.class).get(0);
         NPCOMObject oldman = (NPCOMObject)getWorld().getObjects(NPCOMObject.class).get(0);
         checkPlayer();
-        getWorld().showText("delay" +delay, 500, 100);
         if (!occupied) {
         switch (world) {
             case "woods":

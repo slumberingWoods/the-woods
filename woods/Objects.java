@@ -24,7 +24,7 @@ public class Objects extends Actor
     }
         public boolean isInRange() {
         Player player = (Player)getWorld().getObjects(Player.class).get(0);
-        boolean isInRange = (Math.abs(player.getY() - getY()) < (getImage().getHeight() / 2 + player.getImage().getHeight() / 2 + 5) && 
+        boolean isInRange = (Math.abs(player.getY() - getY()) < (getImage().getHeight() / 2 + player.getImage().getHeight() / 2) && 
             Math.abs(player.getX() - getX()) < (getImage().getWidth() / 2 + player.getImage().getWidth() / 2 + 5));
         if(isInRange && PlayerY > getY())
              return(player.getImage() == player.sprites[3]);

@@ -26,7 +26,6 @@ public class NPCOMObject extends Objects
         Player player = (Player)getWorld().getObjects(Player.class).get(0);
         NPCGIRObject girlrose = (NPCGIRObject)getWorld().getObjects(NPCGIRObject.class).get(0);
         checkPlayer();
-        getWorld().showText("delay" +delay, 500, 300);
         if (!occupied) {
         switch (world) {
             case "woods":

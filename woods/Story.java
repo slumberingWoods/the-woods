@@ -82,9 +82,13 @@ public class Story extends World
             flag++;
         }  else if (Greenfoot.isKeyDown("z") && flag == 7 && delay == 0) {
             delay = 40;
-            showText("Good thing I still have my lighter with me", 500, 350);
+            showText("Good thing I still have my lighter with me.", 500, 350);
             flag++;
-        } else if (Greenfoot.isKeyDown("z") && flag == 8 && delay == 0) {
+        }  else if (Greenfoot.isKeyDown("z") && flag == 8 && delay == 0) {
+            delay = 40;
+            showText("Although this house is giving me the creeps.", 500, 350);
+            flag++;
+        } else if (Greenfoot.isKeyDown("z") && flag == 9 && delay == 0) {
             Greenfoot.setWorld(new House());
         } 
         if (activated || endText) {

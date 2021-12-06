@@ -14,6 +14,7 @@ public class Player extends Actor
     static int speed = 2;
     static int keys = 0;
     static int rose = 0;
+    static int totalScore = 0;
     
     int phase = 0;
     static int light;
@@ -161,39 +162,46 @@ public class Player extends Actor
     }
     public void displayResources() {
         if (menuOn == false) {
-            getWorld().showText("Time: "+Player.time, 
-                getWorld().getWidth()/12, getWorld().getHeight()/15);
             getWorld().showText("Light: "+Player.light,
-                getWorld().getWidth()/12, getWorld().getHeight()/15+25);
+                getWorld().getWidth()*11/12, getWorld().getHeight()/15+25);
             getWorld().showText("Sanity: "+Player.sanity,
-                getWorld().getWidth()/12, getWorld().getHeight()/15+50);
+                getWorld().getWidth()*11/12, getWorld().getHeight()/15+50);
             if (keys > 0) {
                 getWorld().showText("Keys: "+Player.keys,
-                    getWorld().getWidth()/12, getWorld().getHeight()/15+75);
+                    getWorld().getWidth()*11/12, getWorld().getHeight()/15+75);
             } else 
                 getWorld().showText(null,
-                    getWorld().getWidth()/12, getWorld().getHeight()/15+75);
+                    getWorld().getWidth()*11/12, getWorld().getHeight()/15+75);
             if (rose > 0) {
                 getWorld().showText("Roses: "+Player.rose,
-                    getWorld().getWidth()/12, getWorld().getHeight()/15+100);
-            }
-            if (Player.sanity == 0) {
-                Greenfoot.stop();
-                getWorld().showText(null, 
-                    getWorld().getWidth()/12,getWorld().getHeight()/15);
-                getWorld().showText(null, 
-                    getWorld().getWidth()/12,getWorld().getHeight()/5+25);
-                getWorld().showText(null, 
-                    getWorld().getWidth()/15,getWorld().getHeight()/15+50);
-                
-            }   
+                    getWorld().getWidth()*11/12, getWorld().getHeight()/15+100);
+            }  else 
+                getWorld().showText(null,
+                    getWorld().getWidth()*11/12, getWorld().getHeight()/15+100);
         } else {
             getWorld().showText(null, 
-                getWorld().getWidth()/12,getWorld().getHeight()/15);
+                getWorld().getWidth()*11/12,getWorld().getHeight()/15+25);
             getWorld().showText(null, 
-                getWorld().getWidth()/12,getWorld().getHeight()/15+25);
-            getWorld().showText(null, 
-                getWorld().getWidth()/12,getWorld().getHeight()/15+50);
+                getWorld().getWidth()*11/12,getWorld().getHeight()/15+50);
         }
+        if (Player.sanity == 0) {
+                menuOn = true;
+                getWorld().showText(null, 
+                    getWorld().getWidth()*11/12,getWorld().getHeight()/5+25);
+                getWorld().showText(null, 
+                    getWorld().getWidth()*11/12,getWorld().getHeight()/15+50);
+                getWorld().showText(null,
+                    getWorld().getWidth()*11/12, getWorld().getHeight()/15+75);
+                getWorld().showText(null,
+                    getWorld().getWidth()*11/12, getWorld().getHeight()/15+100);
+                getWorld().addObject(new MenuObject("background"), 
+                    getWorld().getWidth()/2, getWorld().getHeight()/2);
+                getWorld().addObject(new MenuObject("mainmenu"), 
+                    getWorld().getWidth()/2, 550);
+                getWorld().addObject(new MenuObject("newgame"), 
+                    getWorld().getWidth()/2, 350);
+                getWorld().showText("Total score: "+ totalScore, 
+                    getWorld().getWidth()/2,150);
+            }   
     }
 }

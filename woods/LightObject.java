@@ -13,11 +13,13 @@ public class LightObject extends Objects
     int textTime = 60;
     boolean activateText = false;
     boolean radius;
-    public LightObject(String name, String text, int center) {
+    boolean lightOn;
+    public LightObject(String name, String text, int center, boolean lightOn) {
         setImage("objects/" + name + ".png");
         this.text = text;
         this.name = name;
         this.center = center;
+        this.lightOn = lightOn;
     }
     public void act() {
         checkPlayer();
@@ -28,10 +30,17 @@ public class LightObject extends Objects
         PlayerX = player.getX();
         PlayerY = player.getY();
         radius = (Math.abs(getX() - player.getX()) < 100 && Math.abs(getY() - player.getY()) < 100);
-        if (Greenfoot.isKeyDown("z") && isInRange() && activateText == false) {
+        if (Greenfoot.isKeyDown("z") && isInRange() && activateText == false && lightOn == true) {
+            if (name == "lantern") 
+                text = "I feel much safer with this lantern lit up.";
             getWorld().showText(text, getWorld().getWidth()/2, getWorld().getHeight()*4/5);
             activateText = true;
-        }    
+        } else if (Greenfoot.isKeyDown("z") && isInRange() && activateText == false && lightOn == false) {
+            getWorld().showText(text, getWorld().getWidth()/2, getWorld().getHeight()*4/5);
+            activateText = true;
+            lightOn = true;
+            setImage("objects/" + name + "1.png");
+        }
         if (activateText) {
             textTime--;
             if (textTime == 0) {

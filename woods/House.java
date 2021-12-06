@@ -59,7 +59,8 @@ public class House extends World
     private void addObjects() {       
         addObject(new Darkness(), originalX, originalY);
         addObject(new LightObject("table", 
-            "The light of the candles will keep me safe for now. If I stay near them, I don't have to use my lighter" , 15),200,125);        
+            "The light of the candles will keep me safe for now. If I stay near them, I don't have to use my lighter",
+            15, true),200,125);        
         addObject(new BasicObject("bed", 40),75, 150); 
         addObject(new TextObject("closet", 15, 
             "A regular closet, all of my clothes are in here, unfolded."),300,100);
@@ -69,6 +70,8 @@ public class House extends World
             "Locked door to the basement. I need a key to open this.", 1), 625, 90);
         addObject( new InteractObject("pot", 15, 
             "I intended to put a plant here to hide the key but I never bought it."), 75, 450);
+        addObject(new TextObject("carpet", 15, 
+            "There's not need for me to go outside. Ever."),625,670);
     }
     private void addWalls() {
         for (int i = 0; i < 9; i++) {

@@ -27,6 +27,7 @@ public class ExitObject extends Objects
         this.name = name;
     }
     public void act() {
+        Player player = (Player)getWorld().getObjects(Player.class).get(0);
         checkPlayer();
         String displayName = "";
         switch (name) {
@@ -59,9 +60,11 @@ public class ExitObject extends Objects
             if (transitionDelay == 0) {
                 switch (name) {
                     case "houseDoor" :
+                        player.totalScore += player.light + player.sanity;
                         Greenfoot.setWorld(new Woods());
                         break;
                     case "woodsGate" :
+                        player.totalScore += player.light + player.sanity;
                         Greenfoot.setWorld(new Garden());
                         break;
                 }
