@@ -67,6 +67,6 @@ public class Woods extends World
     }
     private void addNPC() {
         addObject(new NPCGIRObject("woods"), 600 , 600);
-        addObject(new NPCOMObject("woods"), 50 , 1000);
+        addObject(new NPCOMObject("woods"), 50 , 1100);
     }
 }

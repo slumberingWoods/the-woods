@@ -20,7 +20,7 @@ public class MenuObject extends Objects
                 break;
             case "newgame": 
                 if (Greenfoot.mouseClicked(this)) {
-                    Greenfoot.setWorld(new House());
+                    Greenfoot.setWorld(new Story());
                 }
                 break;
             case "howtoplay": 
