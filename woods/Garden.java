@@ -12,7 +12,7 @@ public class Garden extends World
     static final int HIGH = 700;
     
     static int originalX = 1000;
-    static int originalY = 200;
+    static int originalY = 100;
     
     Scroller scroller;
     Player scrollActor;
@@ -52,14 +52,16 @@ public class Garden extends World
     }    
     private void addObjects() {
         addObject(new TextObject("woodsGate", 15, 
-            "There is no reason for me to return to the other side."), 1000, 150);
+            "There is no reason for me to return to the other side."), 1000, 50);
+        addObject(new ExitObject("well", 45, 
+            "A overgrown well, the opening is closed by 3 locks.", 3), 1000, 800);
         for (int i = 0; i < 25; i++) {
-            addObject(new WallTile("wallhorizontal", 25),1050+50*i,150);
-            addObject(new WallTile("wallhorizontal", 25),950-50*i,150);
+            addObject(new WallTile("wallhorizontal", 25),1050+50*i,50);
+            addObject(new WallTile("wallhorizontal", 25),950-50*i,50);
         }
     }
     private void addNPC() {
-        addObject(new NPCGIRObject("garden"), 1000 , 800);
+        addObject(new NPCGIRObject("garden"), 1100 , 800);
         addObject(new NPCOMObject("garden"), 50 , 1000);
     }
 }   

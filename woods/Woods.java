@@ -68,6 +68,8 @@ public class Woods extends World
             "Locked gate, I could see a garden beyond the fencing", 2), 600, 1150);
         addObject(new InteractObject("stump", 15, 
             "A hollow stump. There's a key inside."), 1000, 200);
+        addObject(new InteractObject("gas", 15,
+            "A gas canister, can be used to refuel my light. +40 light."), 650, 1100);
         for (int i = 0; i < 25; i++) {
             addObject(new WallTile("wallhorizontal", 25),650+50*i,1150);
             addObject(new WallTile("wallhorizontal", 25),550-50*i,1150);

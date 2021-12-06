@@ -60,13 +60,34 @@ public class ExitObject extends Objects
             if (transitionDelay == 0) {
                 switch (name) {
                     case "houseDoor" :
-                        player.totalScore += player.light + player.sanity;
+                        player.totalScore += player.light + player.sanity*2;
                         Greenfoot.setWorld(new Woods());
                         break;
                     case "woodsGate" :
-                        player.totalScore += player.light + player.sanity;
+                        player.totalScore += player.light + player.sanity*2;
                         Greenfoot.setWorld(new Garden());
                         break;
+                    case "well":
+                        player.totalScore += player.light + player.sanity*2;
+                        player.menuOn = true;
+                        getWorld().showText(null, 
+                            getWorld().getWidth()*11/12,getWorld().getHeight()/5+25);
+                        getWorld().showText(null, 
+                            getWorld().getWidth()*11/12,getWorld().getHeight()/15+50);
+                        getWorld().showText(null,
+                            getWorld().getWidth()*11/12, getWorld().getHeight()/15+75);
+                        getWorld().showText(null,
+                            getWorld().getWidth()*11/12, getWorld().getHeight()/15+100);
+                        getWorld().addObject(new MenuObject("background"), 
+                            getWorld().getWidth()/2, getWorld().getHeight()/2);
+                        getWorld().addObject(new MenuObject("mainmenu"), 
+                            getWorld().getWidth()/2, 550);
+                        getWorld().addObject(new MenuObject("newgame"), 
+                            getWorld().getWidth()/2, 350);
+                        getWorld().showText("You have escaped the woods. We welcome your return.", 
+                            getWorld().getWidth()/2,125);
+                        getWorld().showText("Total score: "+ player.totalScore, 
+                            getWorld().getWidth()/2,150);
                 }
             }
         }

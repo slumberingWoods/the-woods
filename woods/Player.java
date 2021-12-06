@@ -24,6 +24,7 @@ public class Player extends Actor
     boolean isLight;
     boolean menuOn = false;
     boolean textOn = false;
+    boolean gameEnd;
     
     static int originalX, originalY;
     static int worldX, worldY;
@@ -200,6 +201,8 @@ public class Player extends Actor
                     getWorld().getWidth()/2, 550);
                 getWorld().addObject(new MenuObject("newgame"), 
                     getWorld().getWidth()/2, 350);
+                getWorld().showText("You lost mind to the darkness of the woods.", 
+                    getWorld().getWidth()/2,125);
                 getWorld().showText("Total score: "+ totalScore, 
                     getWorld().getWidth()/2,150);
             }   

@@ -33,9 +33,17 @@ public class InteractObject extends Objects
         if (Greenfoot.isKeyDown("z")  && isInRange() && activateText == false && interacted == false) {
             getWorld().showText(text,getWorld().getWidth()/2, getWorld().getHeight()*4/5);
             activateText = true;
-            player.keys += 1;
-            interacted = true;
-            setImage("objects/" + name + "2" + ".png");
+            switch (name) {
+                case "pot":
+                case "stump":
+                    player.keys += 1;
+                    interacted = true;
+                    setImage("objects/" + name + "2" + ".png");
+                break;
+                case "gas":
+                    player.light += 40;
+                    getWorld().removeObject(this);
+            }
         }  else if (Greenfoot.isKeyDown("z") && isInRange() && activateText == false && interacted == true) {
             text = "There is nothing more to search here";
             getWorld().showText(text,getWorld().getWidth()/2, getWorld().getHeight()*4/5);
