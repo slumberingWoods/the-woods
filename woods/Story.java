@@ -86,7 +86,7 @@ public class Story extends World
             flag++;
         }  else if (Greenfoot.isKeyDown("z") && flag == 8 && delay == 0) {
             delay = 40;
-            showText("Although this house is giving me the creeps.", 500, 350);
+            showText("This house is really giving me the creeps though.", 500, 350);
             flag++;
         } else if (Greenfoot.isKeyDown("z") && flag == 9 && delay == 0) {
             Greenfoot.setWorld(new House());

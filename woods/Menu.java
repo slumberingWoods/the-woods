@@ -11,6 +11,7 @@ public class Menu extends World
     static final int WIDE = 1000;
     static final int HIGH = 700;
     GreenfootImage bg = new GreenfootImage("void.png");
+    private GreenfootSound menu = new GreenfootSound("main_menu.wav");
     /**
      * Constructor for objects of class Menu.
      * 
@@ -20,7 +21,8 @@ public class Menu extends World
         super(WIDE, HIGH, 1);
         setBackground(bg);
         addObjects();
-        // Create a new world with 600x400 cells with a cell size of 1x1 pixels.
+        menu.setVolume(40);
+        menu.playLoop();
     }
     public void addObjects() {
         addObject(new MenuObject("title"), getWidth()/2, 125);
