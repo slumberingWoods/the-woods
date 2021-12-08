@@ -21,6 +21,8 @@ public class Menu extends World
         super(WIDE, HIGH, 1);
         setBackground(bg);
         addObjects();
+    }
+    public void act() {
         menu.setVolume(40);
         menu.playLoop();
     }
