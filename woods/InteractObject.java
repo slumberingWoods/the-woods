@@ -41,7 +41,9 @@ public class InteractObject extends Objects
                 break;
                 case "gas":
                     Player.light += 40;
+                    getWorld().showText(null, getWorld().getWidth()/2, getWorld().getHeight()*4/5);
                     getWorld().removeObject(this);
+                    break;
             }
         }  else if (Greenfoot.isKeyDown("z") && isInRange() && activateText == false && interacted == true) {
             text = "There is nothing more to search here";
@@ -51,7 +53,7 @@ public class InteractObject extends Objects
         if (activateText) {
             textTime--;
             if (textTime == 0) {
-                getWorld().showText(null, getWorld().getWidth()/2, getWorld().getHeight()*4/5);;
+                getWorld().showText(null, getWorld().getWidth()/2, getWorld().getHeight()*4/5);
                 activateText = false;
                 textTime = 60;
             }

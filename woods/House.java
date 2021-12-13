@@ -49,7 +49,7 @@ public class House extends World
     private void addPlayer() { 
         GreenfootImage bg = new GreenfootImage("floor.png");
         scroller = new Scroller(this, bg, 1000, 700);
-        scrollActor = new Player(300,100);
+        scrollActor = new Player(350,100);
         addObject(scrollActor, originalX, originalY);
         Player.originalX = originalX;
         Player.originalY = originalY;
@@ -74,6 +74,11 @@ public class House extends World
             "I intended to put a plant here to hide the key but I never bought it."), 75, 450);
         addObject(new TextObject("carpet", 15, 
             "There's not need for me to go outside. Ever."),625,670);
+        addObject(new TextObject("mirror", 15, "It's me..."), 780, 85);
+        addObject(new BasicObject("sink", 15), 780, 125);
+        addObject(new BasicObject("bathtub", 30), 925, 150);
+        addObject(new TextObject("toilet", 10, 
+            "I don't feel like it at the moment."), 925, 250);
     }
     private void addWalls() {
         for (int i = 0; i < 9; i++) {

@@ -19,7 +19,8 @@ public class Garden extends World
     public Garden()
     {    
         super(WIDE, HIGH, 1, false);  
-        setPaintOrder(MenuObject.class ,Darkness.class, Player.class, Objects.class, WallTile.class, Wall.class);
+        setPaintOrder(MenuObject.class, TextChoice.class, TextContinue.class, TextBox.class, Darkness.class, 
+            Player.class, Objects.class, WallTile.class, Wall.class);
         addObjects();
         addNPC();
         addPlayer();
@@ -41,7 +42,7 @@ public class Garden extends World
     private void addPlayer() { 
         GreenfootImage bg = new GreenfootImage("void.png");
         scroller = new Scroller(this, bg, 2000, 1400);
-        scrollActor = new Player(300,100);
+        scrollActor = new Player(350,100);
         addObject(scrollActor, originalX, originalY);
         Player.originalX = originalX;
         Player.originalY = originalY;

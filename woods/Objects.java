@@ -11,6 +11,7 @@ public class Objects extends Actor
     int PlayerX, PlayerY, PKeys;
     int center;
     boolean isColision;
+    static boolean canScroll;
     /**
      * Act - do whatever the Objects wants to do. This method is called whenever
      * the 'Act' or 'Run' button gets pressed in the environment.
@@ -26,12 +27,12 @@ public class Objects extends Actor
     }
     public boolean isInRange() {
         Player player = (Player)getWorld().getObjects(Player.class).get(0);
-        boolean isInRange = (Math.abs(player.getY() - getY()) < (getImage().getHeight() / 2 + player.getImage().getHeight()/ 2) && 
+        boolean isInRange = (Math.abs(player.getY() - getY()) < (getImage().getHeight() / 2 + player.getImage().getHeight()/ 2 + 5) && 
             Math.abs(player.getX() - getX()) < (getImage().getWidth() / 2 + player.getImage().getWidth() / 2 + 5));
         if(isInRange && PlayerY > getY())
              return(player.getImage() == player.sprites[3]);
-        else if (getY() > (getImage().getHeight() / 2) + PlayerY + player.getImage().getHeight() / 2 && 
-        Math.abs(PlayerY - getX()) < getImage().getWidth() / 2 + player.getImage().getWidth() / 2)
+        else if (getY() > PlayerY && (Math.abs(player.getY() - getY()) < 100 &&
+        Math.abs(PlayerX - getX()) < getImage().getWidth() / 2 + player.getImage().getWidth() / 2))
              return(player.getImage() == player.sprites[0]);
         else if(isInRange && PlayerX < getX())
              return(player.getImage() == player.sprites[9]);

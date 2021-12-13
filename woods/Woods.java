@@ -46,7 +46,7 @@ public class Woods extends World
     private void addPlayer() { 
         GreenfootImage bg = new GreenfootImage("woodsTile.png");
         scroller = new Scroller(this, bg, 1800, 1200);
-        scrollActor = new Player(300,100);
+        scrollActor = new Player(350,100);
         addObject(scrollActor, originalX, originalY);
         Player.originalX = originalX;
         Player.originalY = originalY;
@@ -58,7 +58,7 @@ public class Woods extends World
     private void addObjects() {
         addObject(new LightObject("lantern", 
             "An unlit lantern, I think I can light it up.",
-            15, false), 750,600); 
+            15, false), 1000,600); 
         addObject(new LightObject("lantern", 
             "An unlit lantern, I think I can light it up.",
             15, false), 250,200);
@@ -68,13 +68,17 @@ public class Woods extends World
         addObject(new InteractObject("stump", 15, 
             "A hollow stump. There's a key inside."), 1000, 200);
         addObject(new InteractObject("gas", 15,
-            "A gas canister, can be used to refuel my light. +40 light."), 650, 1100);
+            "A gas canister, can be used to refuel my light. +40 light."), 650, 1000);
         for (int i = 0; i < 25; i++) {
             addObject(new WallTile("wallhorizontal", 25),650+50*i,1150);
             addObject(new WallTile("wallhorizontal", 25),550-50*i,1150);
         }
         for (int i = 0; i < 11; i++)
             addObject(new DecorObject("footprints"),100+50*i,1125);
+        for (int i = 0; i < 8; i++)
+            addObject(new DecorObject("footprints1"),650+50*i,650);
+        for (int i = 0; i < 7; i++)
+            addObject(new DecorObject("footprints3"),1000, 550-50*i);
     }
     private void addNPC() {
         addObject(new NPCGIRObject("woods"), 600 , 600);
