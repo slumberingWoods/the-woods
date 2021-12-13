@@ -20,13 +20,14 @@ public class Garden extends World
     {    
         super(WIDE, HIGH, 1, false);  
         setPaintOrder(MenuObject.class ,Darkness.class, Player.class, Objects.class, WallTile.class, Wall.class);
-        addNPC();
         addObjects();
+        addNPC();
         addPlayer();
         Player.keys = 0;
     }
     public void act() {
         scroll();
+        addMonster();
     }
     public void scroll()
     {
@@ -50,6 +51,7 @@ public class Garden extends World
         scroll();
     }    
     private void addObjects() {
+        addObject(new Darkness(), originalX, originalY);
         addObject(new TextObject("woodsGate", 15, 
             "There is no reason for me to return to the other side."), 1000, 50);
         addObject(new ExitObject("well", 45, 
@@ -57,6 +59,12 @@ public class Garden extends World
         addObject(new LightObject("lantern", 
             "An unlit lantern. There is an inscription.\"When two are lit, he is summoned\"",
             15, false), 400, 75);
+        addObject(new LightObject("lantern", 
+            "An unlit lantern. There is an inscription.\"When two are lit, he is summoned\"",
+            15, false), 400, 1000);
+        addObject(new DogHouseObject("dogHouse", 15,
+            "A dog house. There's a key inside, I should get out before the dog returns."
+            ), 1800, 875);
         for (int i = 0; i < 25; i++) {
             addObject(new WallTile("wallhorizontal", 25),1050+50*i,50);
             addObject(new WallTile("wallhorizontal", 25),950-50*i,50);
@@ -65,5 +73,12 @@ public class Garden extends World
     private void addNPC() {
         addObject(new NPCGIRObject("garden"), 1100 , 800);
         addObject(new NPCOMObject("garden"), 50 , 75);
+        addObject(new DogObject(), 1800, 950);
+    }
+    public void addMonster() {
+        if (LightObject.lanternLit == 2) {
+            addObject(new NPCEYEObject("Garden"),500 , 350);
+            LightObject.lanternLit = 0;
+        }
     }
 }   

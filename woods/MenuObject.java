@@ -21,6 +21,8 @@ public class MenuObject extends Objects
             case "newgame": 
                 if (Greenfoot.mouseClicked(this)) {
                     Greenfoot.setWorld(new Story());
+                    if (Menu.class.isInstance(getWorld())) 
+                        Menu.menuMusic.stop();
                 }
                 break;
             case "howtoplay": 

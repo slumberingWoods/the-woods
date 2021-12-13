@@ -23,9 +23,9 @@ public class NPCOMObject extends Objects
     }
     public void act()
     {
+        checkPlayer();
         Player player = (Player)getWorld().getObjects(Player.class).get(0);
         NPCGIRObject girlrose = (NPCGIRObject)getWorld().getObjects(NPCGIRObject.class).get(0);
-        checkPlayer();
         if (!occupied) {
         switch (world) {
             case "woods":

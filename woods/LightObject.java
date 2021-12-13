@@ -61,11 +61,5 @@ public class LightObject extends Objects
                 player.isLight = false;
             }
         }
-        checkMonster();
-    }
-    public void checkMonster() {
-        if (lanternLit == 2) {
-            
-        }
     }
 }

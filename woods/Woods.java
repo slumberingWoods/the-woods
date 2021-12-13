@@ -44,7 +44,7 @@ public class Woods extends World
         }
     }
     private void addPlayer() { 
-        GreenfootImage bg = new GreenfootImage("void.png");
+        GreenfootImage bg = new GreenfootImage("woodsTile.png");
         scroller = new Scroller(this, bg, 1800, 1200);
         scrollActor = new Player(300,100);
         addObject(scrollActor, originalX, originalY);
@@ -73,7 +73,7 @@ public class Woods extends World
             addObject(new WallTile("wallhorizontal", 25),650+50*i,1150);
             addObject(new WallTile("wallhorizontal", 25),550-50*i,1150);
         }
-        for (int i = 0; i < 10; i++)
+        for (int i = 0; i < 11; i++)
             addObject(new DecorObject("footprints"),100+50*i,1125);
     }
     private void addNPC() {

@@ -8,21 +8,28 @@ import greenfoot.*;  // (World, Actor, GreenfootImage, Greenfoot and MouseInfo)
  */
 public class NPCEYEObject extends Objects
 {
-    int flag = 0;
     String world;
-    int delay = 40;
-    boolean occupied;
-    boolean activated;
-    boolean continueSymbol;
-    boolean endText;
-    boolean choiceText;
+    int textTime;
+    boolean activateText = false;
     public NPCEYEObject(String world) {
         this.world = world;  
-        delay = 40;
-        setImage("npcs/girlinroses.png");
+        textTime = 40;
+        setImage("npcs/eyeball.png");
     }
     public void act()
     {
-        // Add your action code here.
+        checkPlayer();
+        if (Greenfoot.isKeyDown("z")  && isInRange() && activateText == false) {
+            getWorld().showText("Key...you want...", getWorld().getWidth()/2, getWorld().getHeight()*4/5);
+            Player.keys += 1;
+            activateText = true;
+        }
+         if (activateText) {
+            textTime--;
+            if (textTime == 0) {
+                getWorld().showText(null, getWorld().getWidth()/2, getWorld().getHeight()*4/5);
+                getWorld().removeObject(this);
+            }
+        }
     }
 }

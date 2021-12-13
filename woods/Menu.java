@@ -11,7 +11,7 @@ public class Menu extends World
     static final int WIDE = 1000;
     static final int HIGH = 700;
     GreenfootImage bg = new GreenfootImage("void.png");
-    private GreenfootSound menu = new GreenfootSound("main_menu.wav");
+    public static GreenfootSound menuMusic = new GreenfootSound("main_menu.wav");
     /**
      * Constructor for objects of class Menu.
      * 
@@ -23,8 +23,8 @@ public class Menu extends World
         addObjects();
     }
     public void act() {
-        menu.setVolume(40);
-        menu.playLoop();
+        menuMusic.setVolume(40);
+        menuMusic.playLoop();
     }
     public void addObjects() {
         addObject(new MenuObject("title"), getWidth()/2, 125);
