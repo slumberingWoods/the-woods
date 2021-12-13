@@ -16,7 +16,7 @@ public class House extends World
     
     Scroller scroller;
     Player scrollActor;
-    
+    public static GreenfootSound houseMusic = new GreenfootSound("house.wav");
     /**
      * Constructor for objects of class House.
      * 
@@ -33,6 +33,8 @@ public class House extends World
         player.keys = 0;
     }
     public void act() {
+        houseMusic.setVolume(20);
+        houseMusic.playLoop();
         scroll();
     }
     public void scroll()

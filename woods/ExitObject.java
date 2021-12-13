@@ -64,6 +64,7 @@ public class ExitObject extends Objects
                 switch (name) {
                     case "houseDoor" :
                         player.totalScore += player.light + player.sanity*2;
+                        House.houseMusic.stop();
                         Greenfoot.setWorld(new Woods());
                         break;
                     case "woodsGate" :
