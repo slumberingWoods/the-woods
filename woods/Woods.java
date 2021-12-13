@@ -27,6 +27,7 @@ public class Woods extends World
         setPaintOrder(MenuObject.class, TextChoice.class, TextContinue.class, TextBox.class, Darkness.class, 
             Player.class, Objects.class, WallTile.class, Wall.class);
         addNPC();
+        addWalls();
         addObjects();
         addPlayer();
         Player.keys = 0;
@@ -69,10 +70,6 @@ public class Woods extends World
             "A hollow stump. There's a key inside."), 1000, 200);
         addObject(new InteractObject("gas", 15,
             "A gas canister, can be used to refuel my light. +40 light."), 650, 1000);
-        for (int i = 0; i < 25; i++) {
-            addObject(new WallTile("wallhorizontal", 25),650+50*i,1150);
-            addObject(new WallTile("wallhorizontal", 25),550-50*i,1150);
-        }
         for (int i = 0; i < 11; i++)
             addObject(new DecorObject("footprints"),100+50*i,1125);
         for (int i = 0; i < 8; i++)
@@ -80,8 +77,23 @@ public class Woods extends World
         for (int i = 0; i < 7; i++)
             addObject(new DecorObject("footprints3"),1000, 550-50*i);
     }
+    private void addWalls() {
+        for (int i = 0; i < 25; i++) {
+            addObject(new WallTile("wallhorizontal", 25),650+50*i,1150);
+            addObject(new WallTile("wallhorizontal", 25),550-50*i,1150);
+        }
+        for (int i = 0; i < 40; i++) {
+            addObject(new WallTile("tree", 80),50*i,0);
+        }
+        for (int i = 0; i < 15; i++) {
+            addObject(new WallTile("tree", 80),50,50+75*i);
+        }
+        for (int i = 0; i < 15; i++) {
+            addObject(new WallTile("tree", 80),1750,50+75*i);
+        }
+    }
     private void addNPC() {
         addObject(new NPCGIRObject("woods"), 600 , 600);
-        addObject(new NPCOMObject("woods"), 50 , 1075);
+        addObject(new NPCOMObject("woods"), 200 , 1050);
     }
 }

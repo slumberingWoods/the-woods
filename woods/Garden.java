@@ -22,6 +22,7 @@ public class Garden extends World
         setPaintOrder(MenuObject.class, TextChoice.class, TextContinue.class, TextBox.class, Darkness.class, 
             Player.class, Objects.class, WallTile.class, Wall.class);
         addObjects();
+        addWalls();
         addNPC();
         addPlayer();
         Player.keys = 0;
@@ -40,7 +41,7 @@ public class Garden extends World
         }
     }
     private void addPlayer() { 
-        GreenfootImage bg = new GreenfootImage("void.png");
+        GreenfootImage bg = new GreenfootImage("woodsTile.png");
         scroller = new Scroller(this, bg, 2000, 1400);
         scrollActor = new Player(350,100);
         addObject(scrollActor, originalX, originalY);
@@ -66,15 +67,26 @@ public class Garden extends World
         addObject(new DogHouseObject("dogHouse", 15,
             "A dog house. There's a key inside, I should get out before the dog returns."
             ), 1800, 875);
+    }
+    private void addNPC() {
+        addObject(new NPCGIRObject("garden"), 1100 , 800);
+        addObject(new NPCOMObject("garden"), 200 , 75);
+        addObject(new DogObject(), 1800, 950);
+    }
+    private void addWalls() {
         for (int i = 0; i < 25; i++) {
             addObject(new WallTile("wallhorizontal", 25),1050+50*i,50);
             addObject(new WallTile("wallhorizontal", 25),950-50*i,50);
         }
-    }
-    private void addNPC() {
-        addObject(new NPCGIRObject("garden"), 1100 , 800);
-        addObject(new NPCOMObject("garden"), 50 , 75);
-        addObject(new DogObject(), 1800, 950);
+        for (int i = 0; i < 25; i++) {
+            addObject(new WallTile("wallhorizontal", 25),0+50*i,1350);
+        }
+        for (int i = 0; i < 27; i++) {
+            addObject(new WallTile("tree", 25),50,0+50*i);
+        }
+        for (int i = 0; i < 27; i++) {
+            addObject(new WallTile("tree", 25),1950,0+50*i);
+        }
     }
     public void addMonster() {
         if (LightObject.lanternLit == 2) {
