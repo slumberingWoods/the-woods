@@ -79,6 +79,8 @@ public class House extends World
         addObject(new BasicObject("bathtub", 30), 925, 150);
         addObject(new TextObject("toilet", 10, 
             "I don't feel like it at the moment."), 925, 250);
+        addObject( new TextObject("fireplace", 15, 
+            "There's fire but no heat."), 375, 450);
     }
     private void addWalls() {
         for (int i = 0; i < 9; i++) {

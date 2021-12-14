@@ -8,6 +8,7 @@ import greenfoot.*;  // (World, Actor, GreenfootImage, Greenfoot and MouseInfo)
  */
 public class NPCGIRObject extends Objects
 {
+    int center = 10;
     int flag = 0;
     String world;
     int delay = 40;
