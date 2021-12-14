@@ -23,7 +23,6 @@ public class House extends World
      */
     public House()
     {    
-        // Create a new world with 600x400 cells with a cell size of 1x1 pixels.
         super(WIDE, HIGH, 1, false);  
         setPaintOrder(MenuObject.class, Darkness.class, Player.class, Objects.class, WallTile.class, Wall.class);
         addObjects();
@@ -53,8 +52,6 @@ public class House extends World
         addObject(scrollActor, originalX, originalY);
         Player.originalX = originalX;
         Player.originalY = originalY;
-        Player.worldX = originalX;
-        Player.worldY = originalY;
         Player.speed = 2;
         scroll();
     }    
@@ -79,8 +76,13 @@ public class House extends World
         addObject(new BasicObject("bathtub", 30), 925, 150);
         addObject(new TextObject("toilet", 10, 
             "I don't feel like it at the moment."), 925, 250);
-        addObject( new TextObject("fireplace", 15, 
+        addObject(new TextObject("fireplace", 15, 
             "There's fire but no heat."), 375, 450);
+        addObject(new TextObject("oven", 15, 
+            "A don't need to cook food at the moment"), 860, 460);
+        addObject(new TextObject("kitchenSink", 15, 
+            "No water..."), 930, 550);
+        addObject(new DecorObject("couch"), 75, 550);
     }
     private void addWalls() {
         for (int i = 0; i < 9; i++) {

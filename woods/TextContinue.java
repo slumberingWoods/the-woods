@@ -11,12 +11,11 @@ public class TextContinue extends Actor
     int delay = 10;
     int phase = 0;
     /**
-     * Act - do whatever the TextConitnue wants to do. This method is called whenever
-     * the 'Act' or 'Run' button gets pressed in the environment.
+     * Act - The object moves up and down as an animation to show that the player can move to the next dialogue
      */
     public void act()
     {
-        delay--;
+    delay--;
        if (delay == 0 && phase == 0) {
            setLocation(getX(), getY() - 10);
            delay = 10;

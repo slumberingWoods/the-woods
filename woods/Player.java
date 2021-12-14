@@ -20,15 +20,12 @@ public class Player extends Actor
     static int light;
     static int sanity;
     
-    boolean isMoving;
     boolean isLight;
     boolean menuOn = false;
     boolean textOn = false;
     boolean gameEnd;
     
     static int originalX, originalY;
-    static int worldX, worldY;
-    static int previousWorldX, previousWorldY;
     /**
      * Act - do whatever the Player wants to do. This method is called whenever
      * the 'Act' or 'Run' button gets pressed in the environment.
@@ -61,24 +58,26 @@ public class Player extends Actor
             sanity--;
         }
     }
+    /* Check for current location and store x and y in originalX and OriginalY
+    *   if speed is larger than 0 and menu and text is not on, the player can move
+    *   When key is pressed, time is increased, when time is 10, change sprite and phase
+    *   The walk cycle moves through idle[direction] > rightstep > idle[direction] > leftstep
+    *   This is done by using int phase which represents the foot.
+    */
     public void checkMovement()
     {
         originalX = getX();
         originalY = getY();
-        previousWorldX = worldX;
-        previousWorldY = worldY;
-        if(speed > 0 && menuOn == false && textOn == false)
+        if(speed > 0 && !menuOn && !textOn)
         {    
             if(Greenfoot.isKeyDown("left") || Greenfoot.isKeyDown("right") || Greenfoot.isKeyDown("up") || Greenfoot.isKeyDown("down")) {
                 time++;
-                if(time == 10 && !isLight && light != 0) {
-                light--;
-                }
+                if(time == 10 && !isLight && light != 0) 
+                    light--;
             }
             if (Greenfoot.isKeyDown("down")) {
                 direction = 0;
                 setLocation(getX(),getY()+speed);
-                worldY += speed;
                 if(getImage() == sprites[0] && time == 10 && phase == 0) {
                     setImage(sprites[1]);
                     phase = 1; 
@@ -90,7 +89,6 @@ public class Player extends Actor
             } else if (Greenfoot.isKeyDown("up")) {
                 direction = 3;    
                 setLocation(getX(),getY()-speed);
-                worldY -= speed;
                 if(getImage() == sprites[3] && time == 10 && phase == 0) {
                     setImage(sprites[4]);
                     phase = 1; 
@@ -102,7 +100,6 @@ public class Player extends Actor
             } else if (Greenfoot.isKeyDown("right")) {
                 direction = 6;    
                 setLocation(getX()+speed,getY());
-                worldX += speed;
                 if(getImage() == sprites[6] && time == 10 && phase == 0) {
                     setImage(sprites[7]);
                     phase = 1; 
@@ -114,7 +111,6 @@ public class Player extends Actor
             } else if (Greenfoot.isKeyDown("left")) {
                 direction = 9;    
                 setLocation(getX()-speed,getY());
-                worldX -= speed;
                 if(getImage() == sprites[9] && time == 10 && phase == 0) {
                     setImage(sprites[10]);
                     phase = 1; 
@@ -126,19 +122,17 @@ public class Player extends Actor
             }
             if(Greenfoot.isKeyDown("left") || Greenfoot.isKeyDown("right") || Greenfoot.isKeyDown("up") || Greenfoot.isKeyDown("down"))
             {
-                isMoving = true;
                 if(time == 10)
                     time = 0;
             }
             else
             {
-                isMoving = false;
                 setImage(sprites[direction]);
                 time = 0;
             }
-        } else 
-            isMoving = false;
+        } 
     }
+    // Open menu and generate menu objects
     public void openMenu() {
         if (Greenfoot.isKeyDown("escape") && menuOn == false) {
             menuOn = true;
@@ -152,15 +146,11 @@ public class Player extends Actor
                         getWorld().getWidth()/2, 550);
         }
     }
-    public static boolean interactInput()
-    {
-        return Greenfoot.isKeyDown("enter");
-    }
+    // Use by other objects to set the player back to the original location
     public void checkColision() {
         setLocation(originalX, originalY);
-        worldX = previousWorldX;
-        worldY = previousWorldY;
     }
+    // Display resources at the top right of the screen.
     public void displayResources() {
         if (menuOn == false) {
             getWorld().showText("Light: "+Player.light,

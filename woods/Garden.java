@@ -20,7 +20,7 @@ public class Garden extends World
     {    
         super(WIDE, HIGH, 1, false);  
         setPaintOrder(MenuObject.class, TextChoice.class, TextContinue.class, TextBox.class, Darkness.class, 
-            Player.class, Objects.class, WallTile.class, Wall.class);
+            Player.class, Objects.class, WallTile.class, Wall.class, DecorObject.class);
         addObjects();
         addWalls();
         addNPC();
@@ -47,8 +47,6 @@ public class Garden extends World
         addObject(scrollActor, originalX, originalY);
         Player.originalX = originalX;
         Player.originalY = originalY;
-        Player.worldX = originalX;
-        Player.worldY = originalY;
         Player.speed = 2;
         scroll();
     }    
@@ -67,6 +65,10 @@ public class Garden extends World
         addObject(new DogHouseObject("dogHouse", 15,
             "A dog house. There's a key inside, I should get out before the dog returns."
             ), 1800, 875);
+        for (int i = 0; i < 32; i++) 
+            addObject(new DecorObject("path"), 1000, 0+25*i);
+        for (int i = 0; i < 19; i ++) 
+            addObject(new DecorObject("footprints2"), 400, 125+50*i);
     }
     private void addNPC() {
         addObject(new NPCGIRObject("garden"), 1100 , 800);
@@ -88,6 +90,10 @@ public class Garden extends World
             addObject(new WallTile("tree", 25),1950,0+50*i);
         }
     }
+    /**
+     * Check reference from LightObject in world Garden
+     * if light is 2 then spawn an eye ball in 500,350 a reference to the player's camera position'
+     */
     public void addMonster() {
         if (LightObject.lanternLit == 2) {
             addObject(new NPCEYEObject("Garden"),500 , 350);

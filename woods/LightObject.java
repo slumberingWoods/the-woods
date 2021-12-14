@@ -26,6 +26,11 @@ public class LightObject extends Objects
         checkPlayer();
         checkLight();   
     }
+    /**
+    * radius draws a circle around the light object and checks if the player is in it
+    * If the player is in this radius, their light doesn't go down
+    * If in the garden class, each lantern lit gets add to a counter
+    */ 
     public void checkLight() {
         Player player = (Player)getWorld().getObjects(Player.class).get(0);
         PlayerX = player.getX();

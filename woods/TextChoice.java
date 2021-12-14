@@ -12,8 +12,8 @@ public class TextChoice extends Actor
     int phase = 0;
     int location = 0;
     /**
-     * Act - do whatever the TextChoice wants to do. This method is called whenever
-     * the 'Act' or 'Run' button gets pressed in the environment.
+     * Act - The object moves left and right to highlight the choice
+     * Moving left and right set the phase to 0 or 1 which is referenced when in dialogue choice
      */
     public void act()
     {

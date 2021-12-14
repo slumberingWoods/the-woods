@@ -25,7 +25,7 @@ public class Woods extends World
     {    
         super(WIDE, HIGH, 1, false);  
         setPaintOrder(MenuObject.class, TextChoice.class, TextContinue.class, TextBox.class, Darkness.class, 
-            Player.class, Objects.class, WallTile.class, Wall.class);
+            Player.class, Objects.class, WallTile.class, Wall.class, DecorObject.class);
         addNPC();
         addWalls();
         addObjects();
@@ -51,8 +51,6 @@ public class Woods extends World
         addObject(scrollActor, originalX, originalY);
         Player.originalX = originalX;
         Player.originalY = originalY;
-        Player.worldX = originalX;
-        Player.worldY = originalY;
         Player.speed = 2;
         scroll();
     }    
@@ -76,6 +74,8 @@ public class Woods extends World
             addObject(new DecorObject("footprints1"),650+50*i,650);
         for (int i = 0; i < 7; i++)
             addObject(new DecorObject("footprints3"),1000, 550-50*i);
+        for (int i = 0; i < 25; i++) 
+            addObject(new DecorObject("path"), 600, 650+25*i);
     }
     private void addWalls() {
         for (int i = 0; i < 25; i++) {

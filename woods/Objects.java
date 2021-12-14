@@ -13,8 +13,8 @@ public class Objects extends Actor
     boolean isColision;
     static boolean canScroll;
     /**
-     * Act - do whatever the Objects wants to do. This method is called whenever
-     * the 'Act' or 'Run' button gets pressed in the environment.
+     * Check if the player's y is less than the object's y plus the spacing. 
+     * This allows for the player to pass through the object making it look more natural.
      */
     public void checkPlayer() {
         Player player = (Player)getWorld().getObjects(Player.class).get(0);
@@ -25,6 +25,11 @@ public class Objects extends Actor
         if(isColision) 
             player.checkColision();
     }
+    /**
+     * Check if the player is in range of the object and is facing the correct direction
+     * isInRange boolean check if the distance between the x and y of the player and object
+     * is less than the image width and height of the object divided by 2 plus spacing of 5.
+     */
     public boolean isInRange() {
         Player player = (Player)getWorld().getObjects(Player.class).get(0);
         boolean isInRange = (Math.abs(player.getY() - getY()) < (getImage().getHeight() / 2 + player.getImage().getHeight()/ 2 + 5) && 

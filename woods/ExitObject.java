@@ -16,8 +16,10 @@ public class ExitObject extends Objects
     boolean activateText = false;
     boolean doorUnlock = false;
     /**
-     * Act - do whatever the TextObject wants to do. This method is called whenever
-     * the 'Act' or 'Run' button gets pressed in the environment.
+     * name - name of the exit, used to set image
+     * center - spacing for collision
+     * text - display text
+     * keys - number of keys required to open
      */
     public ExitObject(String name, int center, String text, int keys) {
         setImage("exit/" + name + ".png");
@@ -58,6 +60,11 @@ public class ExitObject extends Objects
                 textTime = 100;
             }
         }
+        /**
+         * If door is open, count down the day. 
+         * If delay is 0, move towards the next world.
+         * Then counts the total score by adding light and sanity times 2 and store it in the player
+         */
         if (doorUnlock) {
             transitionDelay--;
             if (transitionDelay == 0) {
